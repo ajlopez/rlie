@@ -1,0 +1,29 @@
+{
+  "name": "rlie",
+  "description": "R-like interpreter in JavaScript, WIP",
+  "keywords": [
+    "javascript",
+    "r",
+    "rlang",
+    "interpreter"
+  ],
+  "version": "0.0.1alpha",
+  "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ajlopez/rlie.git"
+  },
+  "main": "./lib/rlie.js",
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "scripts": {
+    "test": "simpleunit ./test -r"
+  },
+  "dependencies": {
+    "gelex": "0.0.4"
+  },
+  "devDependencies": {
+    "simpleunit": "0.0.8"
+  }
+}
