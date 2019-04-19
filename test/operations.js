@@ -33,6 +33,10 @@ function min(test, x, expected) {
     apply1(test, 'min', x, expected);
 }
 
+function max(test, x, expected) {
+    apply1(test, 'max', x, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -192,5 +196,18 @@ exports['min vectors'] = function (test) {
     min(test, [ 3, 1, 2 ], 1);
     min(test, [ -1, 2, 3 ], -1);
     min(test, [ -1, 2, -3 ], -3);
+};
+
+exports['max numbers'] = function (test) {
+    max(test, 1, 1);
+    max(test, -1, -1);
+};
+
+exports['max vectors'] = function (test) {
+    max(test, [ 1, 2, 3 ], 3);
+    max(test, [ 3, 2, 1 ], 3);
+    max(test, [ 3, 1, 2 ], 3);
+    max(test, [ -1, 2, 3 ], 3);
+    max(test, [ -1, 2, -3 ], 2);
 };
 
