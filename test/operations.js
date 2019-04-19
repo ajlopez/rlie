@@ -2,7 +2,19 @@
 const operations = require('../lib/operations');
 const vectors = require('../lib/vectors');
 
-function apply(test, opname, x, y, expected) {
+function apply1(test, opname, x, expected) {
+    if (Array.isArray(x))
+        x = vectors.vector(x);
+    
+    const result = operations[opname](x);
+    
+    if (vectors.isVector(result))
+        test.deepEqual(result.elements(), expected);
+    else
+        test.equal(result, expected);
+}
+
+function apply2(test, opname, x, y, expected) {
     if (Array.isArray(x))
         x = vectors.vector(x);
     
@@ -17,24 +29,28 @@ function apply(test, opname, x, y, expected) {
         test.equal(result, expected);
 }
 
+function min(test, x, expected) {
+    apply1(test, 'min', x, expected);
+}
+
 function add(test, x, y, expected) {
-    apply(test, 'add', x, y, expected);
+    apply2(test, 'add', x, y, expected);
 }
 
 function subtract(test, x, y, expected) {
-    apply(test, 'subtract', x, y, expected);
+    apply2(test, 'subtract', x, y, expected);
 }
 
 function multiply(test, x, y, expected) {
-    apply(test, 'multiply', x, y, expected);
+    apply2(test, 'multiply', x, y, expected);
 }
 
 function divide(test, x, y, expected) {
-    apply(test, 'divide', x, y, expected);
+    apply2(test, 'divide', x, y, expected);
 }
 
 function power(test, x, y, expected) {
-    apply(test, 'power', x, y, expected);
+    apply2(test, 'power', x, y, expected);
 }
 
 exports['add numbers'] = function (test) {
@@ -163,5 +179,18 @@ exports['power vector and vector'] = function (test) {
     power(test, [ 1, 1, 1 ], [ -1, 1 ], [ 1, 1, 1 ]);
     power(test, [ 2, 3, 4 ], [ -2, 2 ], [ 2 ** -2, 3 ** 2, 4 ** -2 ]);
     power(test, [ -2, 3 ], [ 1, 1, 2 ], [ -2, 3, 4 ]);
+};
+
+exports['min numbers'] = function (test) {
+    min(test, 1, 1);
+    min(test, -1, -1);
+};
+
+exports['min vectors'] = function (test) {
+    min(test, [ 1, 2, 3 ], 1);
+    min(test, [ 3, 2, 1 ], 1);
+    min(test, [ 3, 1, 2 ], 1);
+    min(test, [ -1, 2, 3 ], -1);
+    min(test, [ -1, 2, -3 ], -3);
 };
 
