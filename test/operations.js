@@ -33,6 +33,10 @@ function divide(test, x, y, expected) {
     apply(test, 'divide', x, y, expected);
 }
 
+function power(test, x, y, expected) {
+    apply(test, 'power', x, y, expected);
+}
+
 exports['add numbers'] = function (test) {
     add(test, 1, 2, 3);
     add(test, Math.PI, Math.E, Math.PI + Math.E);
@@ -131,5 +135,33 @@ exports['divide vector and vector'] = function (test) {
     divide(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E, Math.E / Math.PI ]);
     divide(test, [ 1, 1, 1 ], [ -1, 1 ], [ -1, 1, -1 ]);
     divide(test, [ -1, 1 ], [ 1, 1, 2 ], [ -1, 1, -1/2 ]);
+};
+
+exports['power numbers'] = function (test) {
+    power(test, 1, 2, 1);
+    power(test, Math.PI, Math.E, Math.PI ** Math.E);
+    power(test, -1, 1, -1);
+};
+
+exports['power number and vector'] = function (test) {
+    power(test, 1, [ 1, 2, 3 ], [ 1, 1, 1 ]);
+    power(test, 2, [ 1, 2, 3 ], [ 2, 4, 8 ]);
+    power(test, Math.PI, [ Math.E, Math.E ], [ Math.PI ** Math.E, Math.PI ** Math.E ]);
+    power(test, -1, [ 1, 1, 1 ], [ -1, -1, -1 ]);
+};
+
+exports['power vector and number'] = function (test) {
+    power(test, [ 1, 2, 3 ], 1, [ 1, 2, 3 ]);
+    power(test, [ 1, 2, 3 ], 2, [ 1, 4, 9 ]);
+    power(test, [ Math.E, Math.E ], Math.PI, [ Math.E ** Math.PI, Math.E ** Math.PI ]);
+    power(test, [ 1, 2, 1 ], -2, [ 1, 2 ** -2, 1 ]);
+};
+
+exports['power vector and vector'] = function (test) {
+    power(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2 ** 2, 3 ** 3 ]);
+    power(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E, Math.E ** Math.PI ]);
+    power(test, [ 1, 1, 1 ], [ -1, 1 ], [ 1, 1, 1 ]);
+    power(test, [ 2, 3, 4 ], [ -2, 2 ], [ 2 ** -2, 3 ** 2, 4 ** -2 ]);
+    power(test, [ -2, 3 ], [ 1, 1, 2 ], [ -2, 3, 4 ]);
 };
 
