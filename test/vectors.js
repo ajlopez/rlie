@@ -20,3 +20,16 @@ exports['create vector with vectors'] = function (test) {
     test.deepEqual(vector.elements(), [ 1, 2, 3, 2, 1, 2, 3 ]);
 };
 
+exports['is vector'] = function (test) {
+    const vector = vectors.vector([ 1, 4, 9 ]);
+    
+    test.ok(vectors.isVector(vector));
+    test.ok(!vectors.isVector(undefined));
+    test.ok(!vectors.isVector(null));
+    test.ok(!vectors.isVector('foo'));
+    test.ok(!vectors.isVector(42));
+    test.ok(!vectors.isVector(Math.PI));
+    test.ok(!vectors.isVector(String));
+    test.ok(!vectors.isVector([ 1, 4, 9 ]));
+};
+
