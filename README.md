@@ -4,7 +4,7 @@ R-like interpreter in JavaScript. WIP.
 
 ## References
 
-TBD
+- [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
 
 ## Contribution
 
