@@ -45,6 +45,10 @@ function prod(test, x, expected) {
     apply1(test, 'prod', x, expected);
 }
 
+function length(test, x, expected) {
+    apply1(test, 'length', x, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -247,5 +251,19 @@ exports['prod vectors'] = function (test) {
     prod(test, [ 3, 1, 2 ], 6);
     prod(test, [ -1, 2, 3 ], -6);
     prod(test, [ -1, 2, -3 ], 6);
+};
+
+exports['length elements'] = function (test) {
+    length(test, 1, 1);
+    length(test, "foo", 1);
+};
+
+exports['length vectors'] = function (test) {
+    length(test, [ ], 0);
+    length(test, [ 1, 2, 3 ], 3);
+    length(test, [ 3, 2, 1 ], 3);
+    length(test, [ 3, 1, 2 ], 3);
+    length(test, [ -1, 2, 3 ], 3);
+    length(test, [ -1, 2 ], 2);
 };
 
