@@ -45,6 +45,10 @@ function sum(test, x, expected) {
     apply1(test, 'sum', x, expected);
 }
 
+function not(test, x, expected) {
+    apply1(test, 'not', x, expected);
+}
+
 function prod(test, x, expected) {
     apply1(test, 'prod', x, expected);
 }
@@ -305,5 +309,25 @@ exports['var vectors'] = function (test) {
     varfn(test, [ 4, 4 ], 0);
     varfn(test, [ 4, 6 ], 2);
     varfn(test, [ 1, 2, 3 ], 1);
+};
+
+exports['not numbers'] = function (test) {
+    // TODO in R, these not operations returns error
+    // not(test, null, NaN);
+    // not(test, "foo", NaN);
+    
+    not(test, 0, true);
+    not(test, 1, false);
+    not(test, 2, false);
+};
+
+exports['not vectors'] = function (test) {
+    // TODO in R, not over empty vector returns error
+    // not(test, [ ], NaN);
+    
+    not(test, [ 0, 4 ], [ true, false ]);
+    not(test, [ 4, 4 ], [ false, false ]);
+    not(test, [ 4, 6 ], [ false, false ]);
+    not(test, [ 1, 2, 3 ], [ false, false, false ]);
 };
 
