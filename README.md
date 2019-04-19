@@ -5,6 +5,7 @@ R-like interpreter in JavaScript. WIP.
 ## References
 
 - [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+- [Run R code online](https://rdrr.io/snippets/)
 
 ## Contribution
 

@@ -37,6 +37,14 @@ function max(test, x, expected) {
     apply1(test, 'max', x, expected);
 }
 
+function sum(test, x, expected) {
+    apply1(test, 'sum', x, expected);
+}
+
+function prod(test, x, expected) {
+    apply1(test, 'prod', x, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -191,6 +199,7 @@ exports['min numbers'] = function (test) {
 };
 
 exports['min vectors'] = function (test) {
+    min(test, [], Infinity);
     min(test, [ 1, 2, 3 ], 1);
     min(test, [ 3, 2, 1 ], 1);
     min(test, [ 3, 1, 2 ], 1);
@@ -204,10 +213,39 @@ exports['max numbers'] = function (test) {
 };
 
 exports['max vectors'] = function (test) {
+    max(test, [], -Infinity);
     max(test, [ 1, 2, 3 ], 3);
     max(test, [ 3, 2, 1 ], 3);
     max(test, [ 3, 1, 2 ], 3);
     max(test, [ -1, 2, 3 ], 3);
     max(test, [ -1, 2, -3 ], 2);
+};
+
+exports['sum numbers'] = function (test) {
+    sum(test, 1, 1);
+    sum(test, -1, -1);
+};
+
+exports['sum vectors'] = function (test) {
+    sum(test, [ ], 0);
+    sum(test, [ 1, 2, 3 ], 6);
+    sum(test, [ 3, 2, 1 ], 6);
+    sum(test, [ 3, 1, 2 ], 6);
+    sum(test, [ -1, 2, 3 ], 4);
+    sum(test, [ -1, 2, -3 ], -2);
+};
+
+exports['prod numbers'] = function (test) {
+    prod(test, 1, 1);
+    prod(test, -1, -1);
+};
+
+exports['prod vectors'] = function (test) {
+    prod(test, [ ], 1);
+    prod(test, [ 1, 2, 3 ], 6);
+    prod(test, [ 3, 2, 1 ], 6);
+    prod(test, [ 3, 1, 2 ], 6);
+    prod(test, [ -1, 2, 3 ], -6);
+    prod(test, [ -1, 2, -3 ], 6);
 };
 
