@@ -57,6 +57,10 @@ function mean(test, x, expected) {
     apply1(test, 'mean', x, expected);
 }
 
+function varfn(test, x, expected) {
+    apply1(test, 'var', x, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -287,5 +291,19 @@ exports['mean vectors'] = function (test) {
     mean(test, [ 3, 1, 2 ], 2);
     mean(test, [ -1, 2, 3 ], 4/3);
     mean(test, [ -1, 2 ], 1/2);
+};
+
+exports['var numbers'] = function (test) {
+    varfn(test, 1, NaN);
+    varfn(test, 2, NaN);
+};
+
+exports['var vectors'] = function (test) {
+    // TODO in R, var over empty vector returns error
+    // varfn(test, [ ], NaN);
+    
+    varfn(test, [ 4, 4 ], 0);
+    varfn(test, [ 4, 6 ], 2);
+    varfn(test, [ 1, 2, 3 ], 1);
 };
 
