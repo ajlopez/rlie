@@ -25,6 +25,14 @@ function subtract(test, x, y, expected) {
     apply(test, 'subtract', x, y, expected);
 }
 
+function multiply(test, x, y, expected) {
+    apply(test, 'multiply', x, y, expected);
+}
+
+function divide(test, x, y, expected) {
+    apply(test, 'divide', x, y, expected);
+}
+
 exports['add numbers'] = function (test) {
     add(test, 1, 2, 3);
     add(test, Math.PI, Math.E, Math.PI + Math.E);
@@ -73,5 +81,55 @@ exports['subtract vector and vector'] = function (test) {
     subtract(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E - 1, Math.E - Math.PI ]);
     subtract(test, [ 1, 1, 1 ], [ -1, 1 ], [ 2, 0, 2 ]);
     subtract(test, [ -1, 1 ], [ 1, 1, 1 ], [ -2, 0, -2 ]);
+};
+
+exports['multiply numbers'] = function (test) {
+    multiply(test, 1, 2, 2);
+    multiply(test, Math.PI, Math.E, Math.PI * Math.E);
+    multiply(test, -1, 1, -1);
+};
+
+exports['multiply number and vector'] = function (test) {
+    multiply(test, 1, [ 1, 2, 3 ], [ 1, 2, 3 ]);
+    multiply(test, Math.PI, [ Math.E, Math.E ], [ Math.PI * Math.E, Math.PI * Math.E ]);
+    multiply(test, -1, [ 1, 1, 1 ], [ -1, -1, -1 ]);
+};
+
+exports['multiply vector and number'] = function (test) {
+    multiply(test, [ 1, 2, 3 ], 1, [ 1, 2, 3 ]);
+    multiply(test, [ Math.E, Math.E ], Math.PI, [ Math.E * Math.PI, Math.E * Math.PI ]);
+    multiply(test, [ 1, 1, 1 ], -1, [ -1, -1, -1 ]);
+};
+
+exports['multiply vector and vector'] = function (test) {
+    multiply(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 4, 9 ]);
+    multiply(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E, Math.E * Math.PI ]);
+    multiply(test, [ 1, 1, 1 ], [ -1, 1 ], [ -1, 1, -1 ]);
+    multiply(test, [ -1, 1 ], [ 1, 1, 1 ], [ -1, 1, -1 ]);
+};
+
+exports['divide numbers'] = function (test) {
+    divide(test, 1, 2, 1/2);
+    divide(test, Math.PI, Math.E, Math.PI / Math.E);
+    divide(test, -1, 1, -1);
+};
+
+exports['divide number and vector'] = function (test) {
+    divide(test, 1, [ 1, 2, 3 ], [ 1, 1/2, 1/3 ]);
+    divide(test, Math.PI, [ Math.E, Math.E ], [ Math.PI / Math.E, Math.PI / Math.E ]);
+    divide(test, -1, [ 1, 1, 1 ], [ -1, -1, -1 ]);
+};
+
+exports['divide vector and number'] = function (test) {
+    divide(test, [ 1, 2, 3 ], 1, [ 1, 2, 3 ]);
+    divide(test, [ Math.E, Math.E ], Math.PI, [ Math.E / Math.PI, Math.E / Math.PI ]);
+    divide(test, [ 1, 1, 1 ], -2, [ -1/2, -1/2, -1/2 ]);
+};
+
+exports['divide vector and vector'] = function (test) {
+    divide(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 1, 1 ]);
+    divide(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E, Math.E / Math.PI ]);
+    divide(test, [ 1, 1, 1 ], [ -1, 1 ], [ -1, 1, -1 ]);
+    divide(test, [ -1, 1 ], [ 1, 1, 2 ], [ -1, 1, -1/2 ]);
 };
 
