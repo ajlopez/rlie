@@ -34,3 +34,10 @@ exports['add vector and number'] = function (test) {
     add(test, [ Math.E, Math.E ], Math.PI, [ Math.PI + Math.E, Math.PI + Math.E ]);
     add(test, [ 1, 1, 1 ], -1, [ 0, 0, 0 ]);
 };
+
+exports['add vector and vector'] = function (test) {
+    add(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ 2, 4, 6 ]);
+    add(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E + 1, Math.PI + Math.E ]);
+    add(test, [ 1, 1, 1 ], [ -1, 1 ], [ 0, 2, 0 ]);
+    add(test, [ -1, 1 ], [ 1, 1, 1 ], [ 0, 2, 0 ]);
+};
