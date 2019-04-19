@@ -10,8 +10,12 @@ function apply1(test, opname, x, expected) {
     
     if (vectors.isVector(result))
         test.deepEqual(result.elements(), expected);
-    else
+    else {
+        if (isNaN(result) && isNaN(expected))
+            return;
+        
         test.equal(result, expected);
+    }
 }
 
 function apply2(test, opname, x, y, expected) {
@@ -47,6 +51,10 @@ function prod(test, x, expected) {
 
 function length(test, x, expected) {
     apply1(test, 'length', x, expected);
+}
+
+function mean(test, x, expected) {
+    apply1(test, 'mean', x, expected);
 }
 
 function add(test, x, y, expected) {
@@ -265,5 +273,19 @@ exports['length vectors'] = function (test) {
     length(test, [ 3, 1, 2 ], 3);
     length(test, [ -1, 2, 3 ], 3);
     length(test, [ -1, 2 ], 2);
+};
+
+exports['mean numbers'] = function (test) {
+    mean(test, 1, 1);
+    mean(test, 2, 2);
+};
+
+exports['mean vectors'] = function (test) {
+    mean(test, [ ], NaN);
+    mean(test, [ 1, 2, 3 ], 2);
+    mean(test, [ 3, 2, 1 ], 2);
+    mean(test, [ 3, 1, 2 ], 2);
+    mean(test, [ -1, 2, 3 ], 4/3);
+    mean(test, [ -1, 2 ], 1/2);
 };
 
