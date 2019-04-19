@@ -295,3 +295,19 @@ exports['arithmetic operators'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['assignment operators'] = function (test) {
+    const operators = '= <- ->';
+    const lexer = lexers.lexer(operators);
+    const opers = operators.split(' ');
+    
+    for (var k = 0; k < opers.length; k++) {            
+        const token = lexer.next();
+        
+        test.ok(token);
+        test.equal(token.value, opers[k]);
+        test.equal(token.type, TokenType.Operator);
+    }
+    
+    test.equal(lexer.next(), null);
+};
+
