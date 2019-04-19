@@ -25,3 +25,19 @@ exports['parse string'] = function (test) {
     test.strictEqual(result.value(), "foo");
 };
 
+exports['parse TRUE'] = function (test) {
+    const result = parser.parse('logical', 'TRUE');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'constant');
+    test.strictEqual(result.value(), true);
+};
+
+exports['parse FALSE'] = function (test) {
+    const result = parser.parse('logical', 'FALSE');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'constant');
+    test.strictEqual(result.value(), false);
+};
+
