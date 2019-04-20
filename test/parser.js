@@ -49,3 +49,11 @@ exports['parse NULL'] = function (test) {
     test.strictEqual(result.value(), null);
 };
 
+exports['parse name'] = function (test) {
+    const result = parser.parse('name', 'foo');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'name');
+    test.strictEqual(result.name(), 'foo');
+};
+
