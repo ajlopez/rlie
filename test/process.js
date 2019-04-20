@@ -2,11 +2,16 @@
 const interpreter = require('../lib/interpreter');
 const parser = require('../lib/parser');
 const contexts = require('../lib/contexts');
+const vectors = require('../lib/vectors');
 
 function process(test, text, expected, context) {
     const node = parser.parse('expression', text);
+    const result = interpreter.process(node, context);
     
-    test.deepEqual(interpreter.process(node, context), expected);
+    if (vectors.isVector(result))
+        test.deepEqual(result.elements(), expected);
+    else
+        test.strictEqual(result, expected);
 }
 
 exports['process constants'] = function (test) {
@@ -23,6 +28,13 @@ exports['process name'] = function (test) {
     context.set('answer', 42);
     
     process(test, 'answer', 42, context);
+};
+
+exports['process call'] = function (test) {
+    const context = contexts.context();
+    context.set('c', function (args) { return vectors.vector(args); });
+    
+    process(test, 'c(1,2,3)', [ 1, 2, 3 ], context);
 };
 
 exports['process binary arithmetic operations with numbers'] = function (test) {
