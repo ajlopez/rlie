@@ -40,3 +40,8 @@ exports['process binary arithmetic operations with numbers using precedence'] = 
     process(test, '2+80/2', 42);
 };
 
+exports['process binary arithmetic operations with numbers using parentheses'] = function (test) {
+    process(test, '(1+20)*2', 42);
+    process(test, '2*(20+1)', 42);
+};
+
