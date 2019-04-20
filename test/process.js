@@ -34,7 +34,8 @@ exports['process call'] = function (test) {
     const context = contexts.context();
     context.set('c', function (args) { return vectors.vector(args); });
     
-    process(test, 'c(1,2,3)', [ 1, 2, 3 ], context);
+    process(test, 'c(1, 2, 3)', [ 1, 2, 3 ], context);
+    process(test, 'c(1, c(2, 3, 4), 5)', [ 1, 2, 3, 4, 5 ], context);
 };
 
 exports['process binary arithmetic operations with numbers'] = function (test) {
