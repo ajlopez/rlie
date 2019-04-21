@@ -77,6 +77,10 @@ function greater(test, x, y, expected) {
     apply2(test, 'greater', x, y, expected);
 }
 
+function greaterEqual(test, x, y, expected) {
+    apply2(test, 'greaterEqual', x, y, expected);
+}
+
 function equal(test, x, y, expected) {
     apply2(test, 'equal', x, y, expected);
 }
@@ -436,6 +440,35 @@ exports['greater vector vector'] = function (test) {
     greater(test, [ -3, 2 ], [ -2, -2 ], [ false, true ]);
     greater(test, [ 0, 2 ], [ 2, 2 ], [ false, false ]);
     greater(test, [ 0, 0 ], [ 2, 3, -1 ], [ false, false, true ]);
+};
+
+exports['greater equal numbers'] = function (test) {
+    greaterEqual(test, 1, 2, false);
+    greaterEqual(test, -2, -1, false);
+    greaterEqual(test, 2, 2, true);
+    greaterEqual(test, 2, 0, true);
+};
+
+exports['greater equal number vector'] = function (test) {
+    greaterEqual(test, 1, [ 1, 2 ], [ true, false ]);
+    greaterEqual(test, -2, [ -1, 2 ], [ false, false ]);
+    greaterEqual(test, 2, [ 0, 2 ], [ true, true ]);
+    greaterEqual(test, 2, [ 0, 0 ], [ true, true ]);
+};
+
+exports['greater equal vector number'] = function (test) {
+    greaterEqual(test, [ 1, 2 ], 1, [ true, true ]);
+    greaterEqual(test, [ -3, 2 ], -2, [ false, true ]);
+    greaterEqual(test, [ 3, 2 ], 2, [ true, true ]);
+    greaterEqual(test, [ 3, 6 ], 2, [ true, true ]);
+};
+
+exports['greater equal vector vector'] = function (test) {
+    greaterEqual(test, [ 1, 2 ], [ 1 ], [ true, true ]);
+    greaterEqual(test, [ 1, 3 ], [ 1, 2 ], [ true, true ]);
+    greaterEqual(test, [ -3, 2 ], [ -2, -2 ], [ false, true ]);
+    greaterEqual(test, [ 0, 2 ], [ 2, 2 ], [ false, true ]);
+    greaterEqual(test, [ 0, 0 ], [ 2, 3, -1 ], [ false, false, true ]);
 };
 
 exports['equal numbers'] = function (test) {
