@@ -15,7 +15,6 @@ R-like interpreter in JavaScript. WIP.
 - Index vectors
 - Logical vectors coarse to numbers in arithmetic operations
 
-
 ## Contribution
 
 Feel free to [file issues](https://github.com/ajlopez/rlie) and submit

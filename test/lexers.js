@@ -21,6 +21,18 @@ exports['first token'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['first token skipping line comment'] = function (test) {
+    const lexer = lexers.lexer('# a comment\r\nfoo');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Name);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['no token in empty string'] = function (test) {
     const lexer = lexers.lexer('');
     
