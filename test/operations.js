@@ -65,6 +65,10 @@ function varfn(test, x, expected) {
     apply1(test, 'var', x, expected);
 }
 
+function less(test, x, y, expected) {
+    apply2(test, 'less', x, y, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -331,3 +335,31 @@ exports['not vectors'] = function (test) {
     not(test, [ 1, 2, 3 ], [ false, false, false ]);
 };
 
+exports['less numbers'] = function (test) {
+    less(test, 1, 2, true);
+    less(test, -2, -1, true);
+    less(test, 2, 2, false);
+    less(test, 2, 0, false);
+};
+
+exports['less number vector'] = function (test) {
+    less(test, 1, [ 1, 2 ], [ false, true ]);
+    less(test, -2, [ -1, 2 ], [ true, true ]);
+    less(test, 2, [ 0, 2 ], [ false, false ]);
+    less(test, 2, [ 0, 0 ], [ false, false ]);
+};
+
+exports['less vector number'] = function (test) {
+    less(test, [ 1, 0 ], 1, [ false, true ]);
+    less(test, [ -1, 2 ], -2, [ false, false ]);
+    less(test, [ 0, 2 ], 2, [ true, false ]);
+    less(test, [ 0, 0 ], 2, [ true, true ]);
+};
+
+exports['less vector vector'] = function (test) {
+    less(test, [ 1, 2 ], [ 1 ], [ false, false ]);
+    less(test, [ 1, 0 ], [ 1, 2 ], [ false, true ]);
+    less(test, [ -1, 2 ], [ -2, -2 ], [ false, false ]);
+    less(test, [ 0, 2 ], [ 2, 2 ], [ true, false ]);
+    less(test, [ 0, 0 ], [ 2, 3, -1 ], [ true, true, false ]);
+};
