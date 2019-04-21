@@ -19,6 +19,16 @@ exports['evaluate constants'] = function (test) {
     evaluate(test, 'NULL', null);
 };
 
+exports['evaluate negative numbers'] = function (test) {
+    evaluate(test, '-42', -42);
+    evaluate(test, '-3.14159', -3.14159);
+};
+
+exports['evaluate negative vectors'] = function (test) {
+    evaluate(test, '-c(1, 2, 3)', [ -1, -2, - 3 ]);
+    evaluate(test, '-c()', []);
+};
+
 exports['evaluate arithmetic operations'] = function (test) {
     evaluate(test, '1+2', 3);
     evaluate(test, '2+40', 42);

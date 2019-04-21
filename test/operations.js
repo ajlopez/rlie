@@ -45,6 +45,10 @@ function sum(test, x, expected) {
     apply1(test, 'sum', x, expected);
 }
 
+function minus(test, x, expected) {
+    apply1(test, 'minus', x, expected);
+}
+
 function not(test, x, expected) {
     apply1(test, 'not', x, expected);
 }
@@ -263,6 +267,21 @@ exports['max vectors'] = function (test) {
     max(test, [ 3, 1, 2 ], 3);
     max(test, [ -1, 2, 3 ], 3);
     max(test, [ -1, 2, -3 ], 2);
+};
+
+exports['minus numbers'] = function (test) {
+    minus(test, 1, -1);
+    minus(test, -1, 1);
+    minus(test, 0, 0);
+};
+
+exports['minus vectors'] = function (test) {
+    minus(test, [ ], [ ]);
+    minus(test, [ 1, 2, 3 ], [ -1, -2, -3 ]);
+    minus(test, [ 3, 2, 1 ], [ -3, -2, -1 ]);
+    minus(test, [ 3, 1, 2 ], [ -3, -1, -2 ]);
+    minus(test, [ -1, 2, 3 ], [ 1, -2, -3 ]);
+    minus(test, [ -1, 2, -3 ], [ 1, -2, 3 ]);
 };
 
 exports['sum numbers'] = function (test) {
