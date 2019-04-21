@@ -3,13 +3,16 @@ const rlie = require('..');
 const vectors = require('../lib/vectors');
 
 function evaluate(test, text, expected) {
-    const result = rlie.evaluate(text);
+    let result = rlie.evaluate(text);
     
     if (isNaN(result) && isNaN(expected))
         return;
     
     if (vectors.isVector(result))
-        test.deepEqual(result.elements(), expected);
+        result = result.elements();
+    
+    if (Array.isArray(result))
+        test.deepEqual(result, expected);
     else
         test.strictEqual(rlie.evaluate(text), expected);
 }
@@ -87,4 +90,10 @@ exports['evaluate length'] = function (test) {
     evaluate(test, 'length(c(1, 2, 3))', 3);
     evaluate(test, 'length(4)', 1);
 };
+
+exports['evaluate assign'] = function (test) {
+    evaluate(test, 'answer <- 42\r\nanswer', [ 42, 42 ]);
+    evaluate(test, '1 -> one\r\none', [ 1, 1 ]);
+};
+
 
