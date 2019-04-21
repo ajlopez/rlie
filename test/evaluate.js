@@ -42,3 +42,9 @@ exports['evaluate sum'] = function (test) {
     evaluate(test, 'sum(4)', 4);
 };
 
+exports['evaluate prod'] = function (test) {
+    evaluate(test, 'prod(c())', 1);
+    evaluate(test, 'prod(c(1, 2, 3))', 6);
+    evaluate(test, 'prod(4)', 4);
+};
+
