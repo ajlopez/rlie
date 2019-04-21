@@ -48,3 +48,9 @@ exports['evaluate prod'] = function (test) {
     evaluate(test, 'prod(4)', 4);
 };
 
+exports['evaluate length'] = function (test) {
+    evaluate(test, 'length(c())', 0);
+    evaluate(test, 'length(c(1, 2, 3))', 3);
+    evaluate(test, 'length(4)', 1);
+};
+
