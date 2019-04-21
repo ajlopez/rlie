@@ -36,3 +36,9 @@ exports['evaluate vectors'] = function (test) {
     evaluate(test, 'c(1, c(2, 3, 4), 5)', [ 1, 2, 3, 4, 5 ]);
 };
 
+exports['evaluate sum'] = function (test) {
+    evaluate(test, 'sum(c())', 0);
+    evaluate(test, 'sum(c(1, 2, 3))', 6);
+    evaluate(test, 'sum(4)', 4);
+};
+
