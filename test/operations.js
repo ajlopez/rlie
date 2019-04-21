@@ -69,6 +69,10 @@ function less(test, x, y, expected) {
     apply2(test, 'less', x, y, expected);
 }
 
+function lessEqual(test, x, y, expected) {
+    apply2(test, 'lessEqual', x, y, expected);
+}
+
 function greater(test, x, y, expected) {
     apply2(test, 'greater', x, y, expected);
 }
@@ -374,6 +378,35 @@ exports['less vector vector'] = function (test) {
     less(test, [ -1, 2 ], [ -2, -2 ], [ false, false ]);
     less(test, [ 0, 2 ], [ 2, 2 ], [ true, false ]);
     less(test, [ 0, 0 ], [ 2, 3, -1 ], [ true, true, false ]);
+};
+
+exports['less equal numbers'] = function (test) {
+    lessEqual(test, 1, 2, true);
+    lessEqual(test, -2, -1, true);
+    lessEqual(test, 2, 2, true);
+    lessEqual(test, 2, 0, false);
+};
+
+exports['less equal number vector'] = function (test) {
+    lessEqual(test, 1, [ 1, 2 ], [ true, true ]);
+    lessEqual(test, -2, [ -1, 2 ], [ true, true ]);
+    lessEqual(test, 2, [ 0, 2 ], [ false, true ]);
+    lessEqual(test, 2, [ 0, 0 ], [ false, false ]);
+};
+
+exports['less equal vector number'] = function (test) {
+    lessEqual(test, [ 1, 0 ], 1, [ true, true ]);
+    lessEqual(test, [ -1, 2 ], -2, [ false, false ]);
+    lessEqual(test, [ 0, 2 ], 2, [ true, true ]);
+    lessEqual(test, [ 0, 0 ], 2, [ true, true ]);
+};
+
+exports['less equal vector vector'] = function (test) {
+    lessEqual(test, [ 1, 2 ], [ 1 ], [ true, false ]);
+    lessEqual(test, [ 1, 0 ], [ 1, 2 ], [ true, true ]);
+    lessEqual(test, [ -1, 2 ], [ -2, -2 ], [ false, false ]);
+    lessEqual(test, [ 0, 2 ], [ 2, 2 ], [ true, true ]);
+    lessEqual(test, [ 0, 0 ], [ 2, 3, -1 ], [ true, true, false ]);
 };
 
 exports['greater numbers'] = function (test) {
