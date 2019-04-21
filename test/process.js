@@ -45,12 +45,27 @@ exports['process binary arithmetic operations with numbers'] = function (test) {
     process(test, '84/2', 42);
 };
 
+exports['process comparison operations with numbers'] = function (test) {
+    process(test, '2<40', true);
+    process(test, '2<=21', true);
+    process(test, '44==2', false);
+    process(test, '44!=2', true);
+    process(test, '84>2', true);
+    process(test, '2>=2', true);
+};
+
 exports['process binary arithmetic operations with numbers using precedence'] = function (test) {
     process(test, '2+20*2', 42);
     process(test, '2*20+2', 42);
     process(test, '22*2-2', 42);
     process(test, '80/2+2', 42);
     process(test, '2+80/2', 42);
+};
+
+exports['process binary arithmetic and comparison operations with numbers using precedence'] = function (test) {
+    process(test, '2+20<2', false);
+    process(test, '200>=20+2', true);
+    process(test, '22<2-2', false);
 };
 
 exports['process binary arithmetic operations with numbers using parentheses'] = function (test) {

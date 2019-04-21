@@ -67,3 +67,13 @@ exports['parse add'] = function (test) {
     test.strictEqual(result.right().value(), 40);
 };
 
+exports['parse less'] = function (test) {
+    const result = parser.parse('expression', '2<40');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'binary');
+    test.equal(result.operator(), '<');
+    test.strictEqual(result.left().value(), 2);
+    test.strictEqual(result.right().value(), 40);
+};
+
