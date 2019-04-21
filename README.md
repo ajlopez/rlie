@@ -25,6 +25,8 @@ console.dir(vector.elements());
 
 - [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
 - [Run R code online](https://rdrr.io/snippets/)
+- [How Can I Wait In Node.js (Javascript), l need to pause for a period of time](https://stackoverflow.com/questions/14249506/how-can-i-wait-in-node-js-javascript-l-need-to-pause-for-a-period-of-time)
+- [What's the Big Deal with Generators?](http://devsmash.com/blog/whats-the-big-deal-with-generators)
 
 ## To Do
 
