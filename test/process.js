@@ -38,6 +38,20 @@ exports['process call'] = function (test) {
     process(test, 'c(1, c(2, 3, 4), 5)', [ 1, 2, 3, 4, 5 ], context);
 };
 
+exports['process assign to left'] = function (test) {
+    const context = contexts.context();
+    
+    process(test, 'answer <- 42', 42, context);
+    test.equal(context.get('answer'), 42);
+};
+
+exports['process assign to right'] = function (test) {
+    const context = contexts.context();
+    
+    process(test, '42 -> answer', 42, context);
+    test.equal(context.get('answer'), 42);
+};
+
 exports['process binary arithmetic operations with numbers'] = function (test) {
     process(test, '2+40', 42);
     process(test, '2*21', 42);
