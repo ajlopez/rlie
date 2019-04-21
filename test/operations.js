@@ -77,6 +77,10 @@ function equal(test, x, y, expected) {
     apply2(test, 'equal', x, y, expected);
 }
 
+function notEqual(test, x, y, expected) {
+    apply2(test, 'notEqual', x, y, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -428,5 +432,34 @@ exports['equal vector vector'] = function (test) {
     equal(test, [ -3, 2 ], [ -2, -2 ], [ false, false ]);
     equal(test, [ 0, 2 ], [ 2, 2 ], [ false, true ]);
     equal(test, [ 0, 0 ], [ 2, 3, -1 ], [ false, false, false ]);
+};
+
+exports['not equal numbers'] = function (test) {
+    notEqual(test, 1, 2, true);
+    notEqual(test, -2, -1, true);
+    notEqual(test, 2, 2, false);
+    notEqual(test, 2, 0, true);
+};
+
+exports['not equal number vector'] = function (test) {
+    notEqual(test, 1, [ 1, 2 ], [ false, true ]);
+    notEqual(test, -2, [ -1, 2 ], [ true, true ]);
+    notEqual(test, 2, [ 0, 2 ], [ true, false ]);
+    notEqual(test, 2, [ 0, 2 ], [ true, false ]);
+};
+
+exports['not equal vector number'] = function (test) {
+    notEqual(test, [ 1, 2 ], 1, [ false, true ]);
+    notEqual(test, [ -3, 2 ], -2, [ true, true ]);
+    notEqual(test, [ 3, 2 ], 2, [ true, false ]);
+    notEqual(test, [ 3, 6 ], 2, [ true, true ]);
+};
+
+exports['not equal vector vector'] = function (test) {
+    notEqual(test, [ 1, 2 ], [ 1 ], [ false, true ]);
+    notEqual(test, [ 1, 3 ], [ 1, 2 ], [ false, true ]);
+    notEqual(test, [ -3, 2 ], [ -2, -2 ], [ true, true ]);
+    notEqual(test, [ 0, 2 ], [ 2, 2 ], [ true, false ]);
+    notEqual(test, [ 0, 0 ], [ 2, 3, -1 ], [ true, true, true ]);
 };
 
