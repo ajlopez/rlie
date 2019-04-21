@@ -29,6 +29,15 @@ exports['evaluate negative vectors'] = function (test) {
     evaluate(test, '-c()', []);
 };
 
+exports['evaluate min, max'] = function (test) {
+    evaluate(test, 'min(1)', 1);
+    evaluate(test, 'min(c())', Infinity);
+    evaluate(test, 'min(c(1, 2, 3))', 1);
+    evaluate(test, 'max(1)', 1);
+    evaluate(test, 'max(c())', -Infinity);
+    evaluate(test, 'max(c(1, 2, 3))', 3);
+};
+
 exports['evaluate arithmetic operations'] = function (test) {
     evaluate(test, '1+2', 3);
     evaluate(test, '2+40', 42);
