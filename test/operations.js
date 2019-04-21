@@ -69,6 +69,10 @@ function less(test, x, y, expected) {
     apply2(test, 'less', x, y, expected);
 }
 
+function greater(test, x, y, expected) {
+    apply2(test, 'greater', x, y, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -363,3 +367,33 @@ exports['less vector vector'] = function (test) {
     less(test, [ 0, 2 ], [ 2, 2 ], [ true, false ]);
     less(test, [ 0, 0 ], [ 2, 3, -1 ], [ true, true, false ]);
 };
+
+exports['greater numbers'] = function (test) {
+    greater(test, 1, 2, false);
+    greater(test, -2, -1, false);
+    greater(test, 2, 2, false);
+    greater(test, 2, 0, true);
+};
+
+exports['greater number vector'] = function (test) {
+    greater(test, 1, [ 1, 2 ], [ false, false ]);
+    greater(test, -2, [ -1, 2 ], [ false, false ]);
+    greater(test, 2, [ 0, 2 ], [ true, false ]);
+    greater(test, 2, [ 0, 0 ], [ true, true ]);
+};
+
+exports['greater vector number'] = function (test) {
+    greater(test, [ 1, 2 ], 1, [ false, true ]);
+    greater(test, [ -3, 2 ], -2, [ false, true ]);
+    greater(test, [ 3, 2 ], 2, [ true, false ]);
+    greater(test, [ 3, 6 ], 2, [ true, true ]);
+};
+
+exports['greater vector vector'] = function (test) {
+    greater(test, [ 1, 2 ], [ 1 ], [ false, true ]);
+    greater(test, [ 1, 3 ], [ 1, 2 ], [ false, true ]);
+    greater(test, [ -3, 2 ], [ -2, -2 ], [ false, true ]);
+    greater(test, [ 0, 2 ], [ 2, 2 ], [ false, false ]);
+    greater(test, [ 0, 0 ], [ 2, 3, -1 ], [ false, false, true ]);
+};
+
