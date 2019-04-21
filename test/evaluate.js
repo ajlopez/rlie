@@ -5,6 +5,9 @@ const vectors = require('../lib/vectors');
 function evaluate(test, text, expected) {
     const result = rlie.evaluate(text);
     
+    if (isNaN(result) && isNaN(expected))
+        return;
+    
     if (vectors.isVector(result))
         test.deepEqual(result.elements(), expected);
     else
@@ -36,6 +39,12 @@ exports['evaluate min, max'] = function (test) {
     evaluate(test, 'max(1)', 1);
     evaluate(test, 'max(c())', -Infinity);
     evaluate(test, 'max(c(1, 2, 3))', 3);
+};
+
+exports['evaluate mean'] = function (test) {
+    evaluate(test, 'mean(1)', 1);
+    evaluate(test, 'mean(c())', NaN);
+    evaluate(test, 'mean(c(1, 2, 3))', 2);
 };
 
 exports['evaluate arithmetic operations'] = function (test) {
