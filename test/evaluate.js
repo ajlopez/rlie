@@ -47,6 +47,12 @@ exports['evaluate mean'] = function (test) {
     evaluate(test, 'mean(c(1, 2, 3))', 2);
 };
 
+exports['evaluate var'] = function (test) {
+    evaluate(test, 'var(1)', NaN);
+    evaluate(test, 'var(c(4, 6))', 2);
+    evaluate(test, 'var(c(1, 2, 3))', 1);
+};
+
 exports['evaluate arithmetic operations'] = function (test) {
     evaluate(test, '1+2', 3);
     evaluate(test, '2+40', 42);
