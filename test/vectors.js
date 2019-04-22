@@ -20,6 +20,16 @@ exports['create vector with vectors'] = function (test) {
     test.deepEqual(vector.elements(), [ 1, 2, 3, 2, 1, 2, 3 ]);
 };
 
+exports['resize vector'] = function (test) {
+    const v0 = vectors.vector([ 1, 2, 3 ]);
+    
+    test.deepEqual(vectors.resize(v0, 3).elements(), [ 1, 2, 3 ]);
+    test.deepEqual(vectors.resize(v0, 2).elements(), [ 1, 2 ]);
+    test.deepEqual(vectors.resize(v0, 5).elements(), [ 1, 2, 3, 1, 2 ]);
+    test.deepEqual(vectors.resize(v0, 0).elements(), [ ]);
+    test.deepEqual(vectors.resize(vectors.vector([]), 3).elements(), [ 0, 0, 0 ]);
+};
+
 exports['is vector'] = function (test) {
     const vector = vectors.vector([ 1, 4, 9 ]);
     
