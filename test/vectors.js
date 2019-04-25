@@ -10,6 +10,14 @@ exports['create vector'] = function (test) {
     test.deepEqual(vector.elements(), [ 1, 2, 3 ]);
 };
 
+exports['get element'] = function (test) {
+    const vector = vectors.vector([1, 4, 9]);
+    
+    test.equal(vector.get(1), 1);
+    test.equal(vector.get(2), 4);
+    test.equal(vector.get(3), 9);
+};
+
 exports['create vector with vectors'] = function (test) {
     const v0 = vectors.vector([1, 2, 3]);
     const vector = vectors.vector([ v0, 2, v0 ]);
