@@ -11,6 +11,17 @@ exports['create array with dimensions'] = function (test) {
     test.deepEqual(array.dimensions().elements(), [ 2, 2 ]);
 };
 
+exports['get array elements'] = function (test) {
+    const array = vectors.array([1, 2, 3, 4, 5, 6], [ 2, 3 ]);
+
+    test.equal(array.get(1, 1), 1);
+    test.equal(array.get(2, 1), 2);
+    test.equal(array.get(1, 2), 3);
+    test.equal(array.get(2, 2), 4);
+    test.equal(array.get(1, 3), 5);
+    test.equal(array.get(2, 3), 6);
+};
+
 exports['create array with dimensions extending data'] = function (test) {
     const array = vectors.array([1, 2, 3, 4], [ 2, 3 ]);
     
