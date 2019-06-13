@@ -32,3 +32,12 @@ exports['create array with dimensions extending data'] = function (test) {
     test.deepEqual(array.dimensions().elements(), [ 2, 3 ]);
 };
 
+exports['is array'] = function (test) {
+    const array = vectors.array([1, 2, 3, 4], [ 2, 3 ]);
+    
+    test.ok(vectors.isArray(array));
+    test.ok(!vectors.isArray(null));
+    test.ok(!vectors.isArray(vectors.vector([1, 2, 3, 4])));
+    test.ok(!vectors.isArray(42));
+    test.ok(!vectors.isArray("foo")); 
+};
