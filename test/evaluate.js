@@ -35,6 +35,14 @@ exports['evaluate negative vectors'] = function (test) {
     evaluate(test, '-c()', []);
 };
 
+exports['evaluate array'] = function (test) {
+    let result = rlie.evaluate('array(c(1, 2, 3), c(3))');
+    
+    test.ok(vectors.isArray(result));
+    test.deepEqual(result.dimensions().elements(), [ 3 ]);
+    test.deepEqual(result.elements(), [ 1, 2, 3 ]);
+};
+
 exports['evaluate min, max'] = function (test) {
     evaluate(test, 'min(1)', 1);
     evaluate(test, 'min(c())', Infinity);
