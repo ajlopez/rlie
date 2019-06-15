@@ -12,10 +12,44 @@ exports['create repetition with 1 value repeated 3 times'] = function (test) {
     test.equal(rep.next(), null);
 };
 
+exports['retrieve repetition values twice'] = function (test) {
+    const rep = repetitions.repetition(42, 3);
+    
+    test.ok(rep);
+    
+    test.equal(rep.next(), 42);
+    test.equal(rep.next(), 42);
+    test.equal(rep.next(), 42);
+    test.equal(rep.next(), null);
+    
+    test.equal(rep.next(), 42);
+    test.equal(rep.next(), 42);
+    test.equal(rep.next(), 42);
+    test.equal(rep.next(), null);
+};
+
 exports['create repetition with array'] = function (test) {
     const rep = repetitions.repetition([ 1, 4, 9 ], 5);
     
     test.ok(rep);
+    test.equal(rep.next(), 1);
+    test.equal(rep.next(), 4);
+    test.equal(rep.next(), 9);
+    test.equal(rep.next(), 1);
+    test.equal(rep.next(), 4);
+    test.equal(rep.next(), null);
+};
+
+exports['retrieve repetition values with array twice'] = function (test) {
+    const rep = repetitions.repetition([ 1, 4, 9 ], 5);
+    
+    test.ok(rep);
+    test.equal(rep.next(), 1);
+    test.equal(rep.next(), 4);
+    test.equal(rep.next(), 9);
+    test.equal(rep.next(), 1);
+    test.equal(rep.next(), 4);
+    test.equal(rep.next(), null);
     test.equal(rep.next(), 1);
     test.equal(rep.next(), 4);
     test.equal(rep.next(), 9);
