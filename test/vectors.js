@@ -1,5 +1,7 @@
 
 const vectors = require('../lib/vectors');
+const ranges = require('../lib/ranges');
+const repetitions = require('../lib/repetitions');
 
 exports['create vector'] = function (test) {
     const vector = vectors.vector([1, 2, 3]);
@@ -26,6 +28,26 @@ exports['create vector with vectors'] = function (test) {
     test.equal(typeof vector, 'object');
     test.equal(vector.length(), 7);
     test.deepEqual(vector.elements(), [ 1, 2, 3, 2, 1, 2, 3 ]);
+};
+
+exports['create vector with ranges'] = function (test) {
+    const r0 = ranges.range(1, 3);
+    const vector = vectors.vector([ r0, 2, r0 ]);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 7);
+    test.deepEqual(vector.elements(), [ 1, 2, 3, 2, 1, 2, 3 ]);
+};
+
+exports['create vector with repetitions'] = function (test) {
+    const r0 = repetitions.repetition(1, 3);
+    const vector = vectors.vector([ r0, 2, r0 ]);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 7);
+    test.deepEqual(vector.elements(), [ 1, 1, 1, 2, 1, 1, 1 ]);
 };
 
 exports['resize vector'] = function (test) {
