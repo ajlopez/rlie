@@ -33,6 +33,14 @@ exports['range elements'] = function (test) {
     test.deepEqual(range.elements(), [ 1, 2, 3 ]);
 };
 
+exports['range elements twice'] = function (test) {
+    const range = ranges.range(1, 3);
+    
+    test.ok(range);
+    test.deepEqual(range.elements(), [ 1, 2, 3 ]);
+    test.deepEqual(range.elements(), [ 1, 2, 3 ]);
+};
+
 exports['range length'] = function (test) {
     const range = ranges.range(1, 3);
     
