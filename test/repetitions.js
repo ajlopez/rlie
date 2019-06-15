@@ -12,6 +12,20 @@ exports['create repetition with 1 value repeated 3 times'] = function (test) {
     test.equal(rep.next(), null);
 };
 
+exports['repetition length'] = function (test) {
+    const rep = repetitions.repetition(42, 3);
+    
+    test.ok(rep);
+    test.equal(rep.length(), 3);
+};
+
+exports['repetition elements'] = function (test) {
+    const rep = repetitions.repetition(42, 3);
+    
+    test.ok(rep);
+    test.deepEqual(rep.elements(), [ 42, 42, 42 ]);
+};
+
 exports['retrieve repetition values twice'] = function (test) {
     const rep = repetitions.repetition(42, 3);
     
