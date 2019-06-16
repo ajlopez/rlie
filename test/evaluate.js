@@ -35,6 +35,11 @@ exports['evaluate negative vectors'] = function (test) {
     evaluate(test, '-c()', []);
 };
 
+exports['evaluate sequences'] = function (test) {
+    evaluate(test, 'seq(1, 3)', [ 1, 2, 3 ]);
+    evaluate(test, 'seq(1, -2)', [ 1, 0, -1, -2 ]);
+};
+
 exports['evaluate array'] = function (test) {
     let result = rlie.evaluate('array(c(1, 2, 3), c(3))');
     
