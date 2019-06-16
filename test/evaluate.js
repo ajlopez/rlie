@@ -8,7 +8,7 @@ function evaluate(test, text, expected) {
     if (isNaN(result) && isNaN(expected))
         return;
     
-    if (vectors.isVector(result))
+    if (result && typeof result.elements === 'function')
         result = result.elements();
     
     if (Array.isArray(result))
