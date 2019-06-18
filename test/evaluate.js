@@ -49,6 +49,11 @@ exports['evaluate add sequences'] = function (test) {
     evaluate(test, 'seq(1,3) + seq(1, 3)', [ 1, 4, 6 ]);
 };
 
+exports['evaluate sequences length'] = function (test) {
+    evaluate(test, 'length(seq(1, 3))', 3);
+    evaluate(test, 'length(seq(1, -2))', 4);
+};
+
 exports['evaluate repetition'] = function (test) {
     evaluate(test, 'rep(1, 3)', [ 1, 1, 1 ]);
 };
