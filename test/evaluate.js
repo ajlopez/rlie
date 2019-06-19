@@ -66,6 +66,10 @@ exports['evaluate add repetitions'] = function (test) {
     evaluate(test, 'rep(1, 3) + rep(1, 3)', [ 2, 2, 2 ]);
 };
 
+exports['evaluate repetition length'] = function (test) {
+    evaluate(test, 'length(rep(1, 3))', 3);
+};
+
 exports['evaluate array'] = function (test) {
     let result = rlie.evaluate('array(c(1, 2, 3), c(3))');
     
