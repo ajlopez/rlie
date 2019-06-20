@@ -548,3 +548,10 @@ exports['not equal vector vector'] = function (test) {
     notEqual(test, [ 0, 0 ], [ 2, 3, -1 ], [ true, true, true ]);
 };
 
+exports['exp operation'] = function (test) {
+    test.equal(operations.exp(0), Math.exp(0));
+    test.equal(operations.exp(1), Math.exp(1));
+    test.equal(operations.exp(2), Math.exp(2));
+    apply1(test, 'exp', [ 0, 1, 2 ], [ Math.exp(0), Math.exp(1), Math.exp(2) ]);
+};
+
