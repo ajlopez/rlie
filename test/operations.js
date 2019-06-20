@@ -555,3 +555,10 @@ exports['exp operation'] = function (test) {
     apply1(test, 'exp', [ 0, 1, 2 ], [ Math.exp(0), Math.exp(1), Math.exp(2) ]);
 };
 
+exports['log operation'] = function (test) {
+    test.equal(operations.log(1), Math.log(1));
+    test.equal(operations.log(2), Math.log(2));
+    test.equal(operations.log(3), Math.log(3));
+    apply1(test, 'log', [ 1, 2, 3 ], [ Math.log(1), Math.log(2), Math.log(3) ]);
+};
+
