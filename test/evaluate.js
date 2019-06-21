@@ -139,4 +139,9 @@ exports['evaluate assign'] = function (test) {
     evaluate(test, '1 -> one\r\none', [ 1, 1 ]);
 };
 
+exports['evaluate log'] = function (test) {
+    evaluate(test, 'log(1)', Math.log(1));
+    evaluate(test, 'log(c(1, 2, 3))', [ Math.log(1), Math.log(2), Math.log(3) ]);
+};
+
 
