@@ -144,4 +144,10 @@ exports['evaluate log'] = function (test) {
     evaluate(test, 'log(c(1, 2, 3))', [ Math.log(1), Math.log(2), Math.log(3) ]);
 };
 
+exports['evaluate exp'] = function (test) {
+    evaluate(test, 'exp(1)', Math.exp(1));
+    evaluate(test, 'exp(c(1, 2, 3))', [ Math.exp(1), Math.exp(2), Math.exp(3) ]);
+};
+
+
 
