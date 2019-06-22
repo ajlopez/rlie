@@ -77,3 +77,15 @@ exports['parse less'] = function (test) {
     test.strictEqual(result.right().value(), 40);
 };
 
+exports['parse indexed term'] = function (test) {
+    const result = parser.parse('term', 'foo[42]');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'indexed');
+    test.equal(result.target().ntype(), 'name');
+    test.equal(result.target().name(), 'foo');
+    test.strictEqual(result.index().ntype(), 'constant');
+    test.strictEqual(result.index().value(), 42);
+};
+
+
