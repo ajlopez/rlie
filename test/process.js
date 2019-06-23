@@ -87,3 +87,11 @@ exports['process binary arithmetic operations with numbers using parentheses'] =
     process(test, '2*(20+1)', 42);
 };
 
+exports['process indexed term'] = function (test) {
+    const context = contexts.context();
+    context.set('c', function (args) { return vectors.vector(args); });
+
+    process(test, 'c(1,2,3)[1]', 1, context);
+    process(test, 'c(1,4,9)[2]', 4, context);
+    process(test, 'c(1,4,9)[3]', 9, context);
+};
