@@ -20,6 +20,14 @@ exports['get element'] = function (test) {
     test.equal(vector.get(3), 9);
 };
 
+exports['get negative element'] = function (test) {
+    const vector = vectors.vector([1, 4, 9]);
+    
+    test.deepEqual(vector.get(-1).elements(), [ 4, 9 ]);
+    test.deepEqual(vector.get(-2).elements(), [ 1, 9 ]);
+    test.deepEqual(vector.get(-3).elements(), [ 1, 4 ]);
+};
+
 exports['create vector with vectors'] = function (test) {
     const v0 = vectors.vector([1, 2, 3]);
     const vector = vectors.vector([ v0, 2, v0 ]);
