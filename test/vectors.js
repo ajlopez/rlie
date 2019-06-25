@@ -28,6 +28,12 @@ exports['get negative element'] = function (test) {
     test.deepEqual(vector.get(-3).elements(), [ 1, 4 ]);
 };
 
+exports['get zero element'] = function (test) {
+    const vector = vectors.vector([1, 4, 9]);
+    
+    test.deepEqual(vector.get(0).elements(), [ ]);
+};
+
 exports['create vector with vectors'] = function (test) {
     const v0 = vectors.vector([1, 2, 3]);
     const vector = vectors.vector([ v0, 2, v0 ]);
