@@ -35,6 +35,13 @@ exports['evaluate negative vectors'] = function (test) {
     evaluate(test, '-c()', []);
 };
 
+exports['evaluate index vector'] = function (test) {
+    evaluate(test, 'c(1, 2, 3)[1]', 1);
+    evaluate(test, 'c(1, 2, 3)[2]', 2);
+    evaluate(test, 'c(1, 2, 3)[3]', 3);
+    evaluate(test, 'c(1, 2, 3)[-2]', [1, 3]);
+};
+
 exports['evaluate sequences'] = function (test) {
     evaluate(test, 'seq(1, 3)', [ 1, 2, 3 ]);
     evaluate(test, 'seq(1, -2)', [ 1, 0, -1, -2 ]);
