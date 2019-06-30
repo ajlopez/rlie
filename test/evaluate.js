@@ -162,5 +162,10 @@ exports['evaluate exp'] = function (test) {
     evaluate(test, 'exp(c(1, 2, 3))', [ Math.exp(1), Math.exp(2), Math.exp(3) ]);
 };
 
+exports['evaluate sqrt'] = function (test) {
+    evaluate(test, 'sqrt(1)', Math.sqrt(1));
+    evaluate(test, 'sqrt(c(1, 2, 3))', [ Math.sqrt(1), Math.sqrt(2), Math.sqrt(3) ]);
+};
+
 
 
