@@ -562,3 +562,10 @@ exports['log operation'] = function (test) {
     apply1(test, 'log', [ 1, 2, 3 ], [ Math.log(1), Math.log(2), Math.log(3) ]);
 };
 
+exports['sqrt operation'] = function (test) {
+    test.equal(operations.sqrt(1), Math.sqrt(1));
+    test.equal(operations.sqrt(2), Math.sqrt(2));
+    test.equal(operations.sqrt(3), Math.sqrt(3));
+    apply1(test, 'sqrt', [ 1, 2, 3 ], [ Math.sqrt(1), Math.sqrt(2), Math.sqrt(3) ]);
+};
+
