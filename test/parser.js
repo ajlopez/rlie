@@ -88,4 +88,15 @@ exports['parse indexed term'] = function (test) {
     test.strictEqual(result.index().value(), 42);
 };
 
+exports['parse range term'] = function (test) {
+    const result = parser.parse('term', '1:42');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'range');
+    test.equal(result.from().ntype(), 'constant');
+    test.equal(result.from().value(), 1);
+    test.equal(result.to().ntype(), 'constant');
+    test.equal(result.to().value(), 42);
+};
+
 
