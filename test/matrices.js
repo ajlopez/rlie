@@ -7,8 +7,7 @@ exports['create matrix from native array'] = function (test) {
     test.ok(matrix);
     test.equal(matrix.length(), 6);
     test.deepEqual(matrix.elements(), [ 1, 2, 3, 4, 5, 6 ]);
-    // TODO resolve this test
-    //test.deepEqual(matrix.dimensions(), [ 2, 3 ]);
+    test.deepEqual(matrix.dimensions().elements(), [ 2, 3 ]);
 
     test.equal(matrix.get(1, 1), 1);
     test.equal(matrix.get(2, 1), 2);
