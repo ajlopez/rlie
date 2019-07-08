@@ -34,7 +34,7 @@ exports['create matrix from vector without specifying rows and columns'] = funct
 };
 
 exports['create matrix using native array rows'] = function (test) {
-    const matrix = vectors.rbind([ 1, 2, 3 ], [ 4, 5, 6 ]);
+    const matrix = vectors.rbind([ [ 1, 2, 3 ], [ 4, 5, 6 ] ]);
     
     test.ok(matrix);
     test.equal(matrix.length(), 6);
@@ -50,7 +50,7 @@ exports['create matrix using native array rows'] = function (test) {
 };
 
 exports['create matrix using native array rows with different lenghts'] = function (test) {
-    const matrix = vectors.rbind([ 1, 2 ], [ 4, 5, 6 ]);
+    const matrix = vectors.rbind([ [ 1, 2 ], [ 4, 5, 6 ] ]);
     
     test.ok(matrix);
     test.equal(matrix.length(), 6);
@@ -66,7 +66,7 @@ exports['create matrix using native array rows with different lenghts'] = functi
 };
 
 exports['create matrix using vector rows'] = function (test) {
-    const matrix = vectors.rbind(vectors.vector([ 1, 2, 3 ]), vectors.vector([ 4, 5, 6 ]));
+    const matrix = vectors.rbind([ vectors.vector([ 1, 2, 3 ]), vectors.vector([ 4, 5, 6 ]) ]);
     
     test.ok(matrix);
     test.equal(matrix.length(), 6);
