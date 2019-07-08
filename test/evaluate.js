@@ -100,6 +100,15 @@ exports['evaluate matrix'] = function (test) {
     test.deepEqual(result.elements(), [ 1, 2, 3, 4, 5, 6 ]);
 };
 
+exports['evaluate rbind'] = function (test) {
+    let result = rlie.evaluate('rbind(c(1, 2, 3), c(4, 5, 6))');
+    
+    // TODO isMatrix
+    // test.ok(vectors.isMatrix(result));
+    test.deepEqual(result.dimensions().elements(), [ 2, 3 ]);
+    test.deepEqual(result.elements(), [ 1, 2, 3, 4, 5, 6 ]);
+};
+
 exports['evaluate min, max'] = function (test) {
     evaluate(test, 'min(1)', 1);
     evaluate(test, 'min(c())', Infinity);
