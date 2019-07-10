@@ -569,3 +569,8 @@ exports['sqrt operation'] = function (test) {
     apply1(test, 'sqrt', [ 1, 2, 3 ], [ Math.sqrt(1), Math.sqrt(2), Math.sqrt(3) ]);
 };
 
+exports['dim operation'] = function (test) {
+    test.deepEqual(operations.dim(vectors.matrix([ 1, 2, 3, 4, 5, 6 ], [ 2, 3 ])).elements(), [ 2, 3 ]);
+    test.equal(operations.dim(42), null);
+};
+
