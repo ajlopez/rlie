@@ -100,6 +100,13 @@ exports['evaluate matrix'] = function (test) {
     test.deepEqual(result.elements(), [ 1, 2, 3, 4, 5, 6 ]);
 };
 
+exports['evaluate matrix dim'] = function (test) {
+    let result = rlie.evaluate('dim(matrix(c(1, 2, 3, 4, 5, 6), 2, 3))');
+    
+    test.ok(vectors.isVector(result));
+    test.deepEqual(result.elements(), [ 2, 3 ]);
+};
+
 exports['evaluate rbind'] = function (test) {
     let result = rlie.evaluate('rbind(c(1, 2, 3), c(4, 5, 6))');
     
