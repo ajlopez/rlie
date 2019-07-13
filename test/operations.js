@@ -574,3 +574,8 @@ exports['dim operation'] = function (test) {
     test.equal(operations.dim(42), null);
 };
 
+exports['nrow operation'] = function (test) {
+    test.deepEqual(operations.nrow(vectors.matrix([ 1, 2, 3, 4, 5, 6 ], 2, 3 )), 2);
+    test.equal(operations.nrow(42), null);
+};
+
