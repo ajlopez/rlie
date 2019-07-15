@@ -110,15 +110,13 @@ exports['evaluate matrix dim'] = function (test) {
 exports['evaluate nrow'] = function (test) {
     let result = rlie.evaluate('nrow(matrix(c(1, 2, 3, 4, 5, 6), 2, 3))');
     
-    test.ok(vectors.isVector(result));
-    test.deepEqual(result.elements(), 2);
+    test.equal(result, 2);
 };
 
 exports['evaluate ncol'] = function (test) {
     let result = rlie.evaluate('ncol(matrix(c(1, 2, 3, 4, 5, 6), 2, 3))');
     
-    test.ok(vectors.isVector(result));
-    test.deepEqual(result.elements(), 3);
+    test.deepEqual(result, 3);
 };
 
 exports['evaluate rbind'] = function (test) {
