@@ -82,10 +82,11 @@ exports['parse indexed term'] = function (test) {
     
     test.ok(result);
     test.equal(result.ntype(), 'indexed');
-    test.equal(result.target().ntype(), 'name');
     test.equal(result.target().name(), 'foo');
-    test.strictEqual(result.index().ntype(), 'constant');
-    test.strictEqual(result.index().value(), 42);
+    test.ok(Array.isArray(result.index()));
+    test.equal(result.index().length, 1);
+    test.strictEqual(result.index()[0].ntype(), 'constant');
+    test.strictEqual(result.index()[0].value(), 42);
 };
 
 exports['parse range term'] = function (test) {
