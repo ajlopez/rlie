@@ -89,6 +89,20 @@ exports['parse indexed term'] = function (test) {
     test.strictEqual(result.index()[0].value(), 42);
 };
 
+exports['parse indexed term with two indices'] = function (test) {
+    const result = parser.parse('term', 'foo[42, 2]');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'indexed');
+    test.equal(result.target().name(), 'foo');
+    test.ok(Array.isArray(result.index()));
+    test.equal(result.index().length, 2);
+    test.strictEqual(result.index()[0].ntype(), 'constant');
+    test.strictEqual(result.index()[0].value(), 42);
+    test.strictEqual(result.index()[1].ntype(), 'constant');
+    test.strictEqual(result.index()[1].value(), 2);
+};
+
 exports['parse range term'] = function (test) {
     const result = parser.parse('term', '1:42');
     
