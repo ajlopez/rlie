@@ -129,3 +129,13 @@ exports['create matrix using vector columns'] = function (test) {
     test.equal(matrix.get(2, 3), 6);
 };
 
+exports['get slices'] = function (test) {
+    const matrix = vectors.matrix([ 1, 2, 3, 4, 5, 6 ], 2, 3);
+    
+    test.deepEqual(matrix.slice(1, 1).elements(), [ 1, 3, 5 ]);
+    test.deepEqual(matrix.slice(1, 2).elements(), [ 2, 4, 6 ]);
+    test.deepEqual(matrix.slice(2, 1).elements(), [ 1, 2 ]);
+    test.deepEqual(matrix.slice(2, 2).elements(), [ 3, 4 ]);
+    test.deepEqual(matrix.slice(2, 3).elements(), [ 5, 6 ]);
+};
+
