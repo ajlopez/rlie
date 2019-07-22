@@ -103,7 +103,7 @@ exports['parse indexed term with two indices'] = function (test) {
     test.strictEqual(result.index()[1].value(), 2);
 };
 
-exports['parse indexed term with two partial indices'] = function (test) {
+exports['parse indexed term without first index'] = function (test) {
     const result = parser.parse('term', 'foo[, 42]');
     
     test.ok(result);
@@ -115,6 +115,20 @@ exports['parse indexed term with two partial indices'] = function (test) {
     test.strictEqual(result.index()[0].value(), null);
     test.strictEqual(result.index()[1].ntype(), 'constant');
     test.strictEqual(result.index()[1].value(), 42);
+};
+
+exports['parse indexed term without second index'] = function (test) {
+    const result = parser.parse('term', 'foo[42, ]');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'indexed');
+    test.equal(result.target().name(), 'foo');
+    test.ok(Array.isArray(result.index()));
+    test.equal(result.index().length, 2);
+    test.strictEqual(result.index()[0].ntype(), 'constant');
+    test.strictEqual(result.index()[0].value(), 42);
+    test.strictEqual(result.index()[1].ntype(), 'constant');
+    test.strictEqual(result.index()[1].value(), null);
 };
 
 exports['parse range term'] = function (test) {
