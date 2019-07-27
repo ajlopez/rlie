@@ -109,6 +109,14 @@ exports['evaluate get matrix element'] = function (test) {
     test.equal(rlie.evaluate('matrix(c(1, 2, 3, 4, 5, 6), 2, 3)[2,3]'), 6);
 };
 
+exports['evaluate get matrix element using null index'] = function (test) {
+    test.deepEqual(rlie.evaluate('matrix(c(1, 2, 3, 4, 5, 6), 2, 3)[1,]').elements(), [ 1, 3, 5 ]);
+    test.deepEqual(rlie.evaluate('matrix(c(1, 2, 3, 4, 5, 6), 2, 3)[2,]').elements(), [ 2, 4, 6 ]);
+    test.deepEqual(rlie.evaluate('matrix(c(1, 2, 3, 4, 5, 6), 2, 3)[,1]').elements(), [ 1, 2 ]);
+    test.deepEqual(rlie.evaluate('matrix(c(1, 2, 3, 4, 5, 6), 2, 3)[,2]').elements(), [ 3, 4 ]);
+    test.deepEqual(rlie.evaluate('matrix(c(1, 2, 3, 4, 5, 6), 2, 3)[,3]').elements(), [ 5, 6 ]);
+};
+
 exports['evaluate matrix dim'] = function (test) {
     let result = rlie.evaluate('dim(matrix(c(1, 2, 3, 4, 5, 6), 2, 3))');
     
