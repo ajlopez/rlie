@@ -584,3 +584,10 @@ exports['ncol operation'] = function (test) {
     test.equal(operations.ncol(42), null);
 };
 
+exports['abs operation'] = function (test) {
+    test.equal(operations.abs(1), Math.abs(1));
+    test.equal(operations.abs(2), Math.abs(2));
+    test.equal(operations.abs(-3), Math.abs(-3));
+    apply1(test, 'abs', [ 1, 2, -3 ], [ Math.abs(1), Math.abs(2), Math.abs(-3) ]);
+};
+
