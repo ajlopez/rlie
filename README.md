@@ -29,6 +29,7 @@ console.dir(vector.elements());
 - [What's the Big Deal with Generators?](http://devsmash.com/blog/whats-the-big-deal-with-generators)
 - [R Matrix](https://www.datamentor.io/r-programming/matrix/)
 - [Purr Tutorial](https://jennybc.github.io/purrr-tutorial/)
+- [R Programming](https://www.tutorialgateway.org/r-programming/)
 
 ## To Do
 
