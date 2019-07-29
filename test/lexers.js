@@ -335,3 +335,15 @@ exports['assignment operators'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['modulus as operator'] = function (test) {
+    const lexer = lexers.lexer('%%');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '%%');
+    test.equal(token.type, TokenType.Operator);
+    
+    test.equal(lexer.next(), null);
+};
+
