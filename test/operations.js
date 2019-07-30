@@ -109,6 +109,10 @@ function divide(test, x, y, expected) {
     apply2(test, 'divide', x, y, expected);
 }
 
+function mod(test, x, y, expected) {
+    apply2(test, 'mod', x, y, expected);
+}
+
 function power(test, x, y, expected) {
     apply2(test, 'power', x, y, expected);
 }
@@ -211,6 +215,27 @@ exports['divide vector and vector'] = function (test) {
     divide(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E, Math.E / Math.PI ]);
     divide(test, [ 1, 1, 1 ], [ -1, 1 ], [ -1, 1, -1 ]);
     divide(test, [ -1, 1 ], [ 1, 1, 2 ], [ -1, 1, -1/2 ]);
+};
+
+exports['mod numbers'] = function (test) {
+    mod(test, 3, 2, 1);
+    mod(test, 2, 2, 0);
+    mod(test, -3, 2, -1);
+};
+
+exports['mod number and vector'] = function (test) {
+    mod(test, 1, [ 1, 2, 3 ], [ 0, 1, 1 ]);
+    mod(test, 5, [ 1, 2, 3 ], [ 0, 1, 2 ]);
+};
+
+exports['mod vector and number'] = function (test) {
+    mod(test, [ 1, 2, 3 ], 2, [ 1, 0, 1 ]);
+    mod(test, [ 5, 7, 3 ], 2, [ 1, 1, 1 ]);
+};
+
+exports['mod vector and vector'] = function (test) {
+    mod(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ 0, 0, 0 ]);
+    mod(test, [ 5, 7 ], [ 1, 2, 3 ], [ 0, 1, 2 ]);
 };
 
 exports['power numbers'] = function (test) {
