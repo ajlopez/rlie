@@ -230,5 +230,12 @@ exports['evaluate sqrt'] = function (test) {
     evaluate(test, 'sqrt(c(1, 2, 3))', [ Math.sqrt(1), Math.sqrt(2), Math.sqrt(3) ]);
 };
 
+exports['evaluate abs'] = function (test) {
+    evaluate(test, 'abs(1)', Math.abs(1));
+    evaluate(test, 'abs(-2)', Math.abs(2));
+    evaluate(test, 'abs(c(1, -2, -3))', [ Math.abs(1), Math.abs(-2), Math.abs(-3) ]);
+};
+
+
 
 
