@@ -109,6 +109,10 @@ function divide(test, x, y, expected) {
     apply2(test, 'divide', x, y, expected);
 }
 
+function integerDivide(test, x, y, expected) {
+    apply2(test, 'integerDivide', x, y, expected);
+}
+
 function mod(test, x, y, expected) {
     apply2(test, 'mod', x, y, expected);
 }
@@ -215,6 +219,30 @@ exports['divide vector and vector'] = function (test) {
     divide(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ Math.E, Math.E / Math.PI ]);
     divide(test, [ 1, 1, 1 ], [ -1, 1 ], [ -1, 1, -1 ]);
     divide(test, [ -1, 1 ], [ 1, 1, 2 ], [ -1, 1, -1/2 ]);
+};
+
+exports['integer divide numbers'] = function (test) {
+    integerDivide(test, 1, 2, 0);
+    integerDivide(test, 3, 2, 1);
+    integerDivide(test, -3, 2, -2);
+};
+
+exports['integer divide number and vector'] = function (test) {
+    integerDivide(test, 1, [ 1, 2, 3 ], [ 1, 0, 0 ]);
+    integerDivide(test, 7, [ 1, 2, 3 ], [ 7, 3, 2 ]);
+    integerDivide(test, -7, [ 1, 2, 3 ], [ -7, -4, -3 ]);
+};
+
+exports['integer divide vector and number'] = function (test) {
+    integerDivide(test, [ 1, 2, 3 ], 1, [ 1, 2, 3 ]);
+    integerDivide(test, [ 1, 2, 3 ], 2, [ 0, 1, 1 ]);
+    integerDivide(test, [ -1, -2, -3 ], 2, [ -1, -1, -2 ]);
+};
+
+exports['integer divide vector and vector'] = function (test) {
+    integerDivide(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 1, 1 ]);
+    integerDivide(test, [ 1, 1, 1 ], [ -1, 1 ], [ -1, 1, -1 ]);
+    integerDivide(test, [ -1, 1 ], [ 1, 1, 2 ], [ -1, 1, -1 ]);
 };
 
 exports['mod numbers'] = function (test) {
