@@ -58,6 +58,7 @@ exports['process binary arithmetic operations with numbers'] = function (test) {
     process(test, '44-2', 42);
     process(test, '84/2', 42);
     process(test, '85%/%2', 42);
+    process(test, '85%%2', 1);
 };
 
 exports['process comparison operations with numbers'] = function (test) {
@@ -76,6 +77,7 @@ exports['process binary arithmetic operations with numbers using precedence'] = 
     process(test, '80/2+2', 42);
     process(test, '2+80/2', 42);
     process(test, '2+80%/%2', 42);
+    process(test, '2+81%%2', 3);
 };
 
 exports['process binary arithmetic and comparison operations with numbers using precedence'] = function (test) {
