@@ -87,6 +87,26 @@ exports['parse integer division'] = function (test) {
     test.strictEqual(result.right().value(), 2);
 };
 
+exports['parse logical and'] = function (test) {
+    const result = parser.parse('expression', '7 & 2');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'binary');
+    test.equal(result.operator(), '&');
+    test.strictEqual(result.left().value(), 7);
+    test.strictEqual(result.right().value(), 2);
+};
+
+exports['parse logical or'] = function (test) {
+    const result = parser.parse('expression', '7 | 2');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'binary');
+    test.equal(result.operator(), '|');
+    test.strictEqual(result.left().value(), 7);
+    test.strictEqual(result.right().value(), 2);
+};
+
 exports['parse less'] = function (test) {
     const result = parser.parse('expression', '2<40');
     
