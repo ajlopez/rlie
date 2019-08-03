@@ -42,6 +42,12 @@ exports['evaluate index vector'] = function (test) {
     evaluate(test, 'c(1, 2, 3)[-2]', [1, 3]);
 };
 
+exports['evaluate mod expressions'] = function (test) {
+    evaluate(test, '3%%2', 1);
+    evaluate(test, '-3%%2', -1);
+    evaluate(test, 'c(1, 2, 3)%%2', [ 1, 0, 1 ]);
+};
+
 exports['evaluate index vector using vector as index'] = function (test) {
     evaluate(test, 'c(1, 2, 3)[c(1, 2)]', [ 1, 2 ]);
     evaluate(test, 'c(1, 4, 9)[c(1, 3)]', [ 1, 9 ]);
