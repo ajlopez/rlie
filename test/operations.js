@@ -93,6 +93,10 @@ function notEqual(test, x, y, expected) {
     apply2(test, 'notEqual', x, y, expected);
 }
 
+function and(test, x, y, expected) {
+    apply2(test, 'and', x, y, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -120,6 +124,38 @@ function mod(test, x, y, expected) {
 function power(test, x, y, expected) {
     apply2(test, 'power', x, y, expected);
 }
+
+exports['and logical values'] = function (test) {
+    and(test, true, true, true);
+    and(test, true, false, false);
+    and(test, false, true, false);
+    and(test, false, false, false);
+};
+
+exports['and numbers'] = function (test) {
+    and(test, 1, 2, true);
+    and(test, Math.PI, Math.E, true);
+    and(test, -1, 1, true);
+};
+
+exports['and number and vector'] = function (test) {
+    and(test, 1, [ 1, 0, 3 ], [ true, false, true ]);
+    and(test, Math.PI, [ Math.E, Math.E ], [ true, true ]);
+    and(test, -1, [ 1, 1, 1 ], [ true, true, true ]);
+};
+
+exports['and vector and number'] = function (test) {
+    and(test, [ 1, 0, 3 ], 1, [ true, false, true ]);
+    and(test, [ Math.E, Math.E ], Math.PI, [ true, true ]);
+    and(test, [ 1, 1, 1 ], -1, [ true, true, true ]);
+};
+
+exports['and vector and vector'] = function (test) {
+    and(test, [ 1, 2, 3 ], [ 1, 2, 3 ], [ true, true, true ]);
+    and(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ true, true ]);
+    and(test, [ 1, 1, 1 ], [ -1, 1 ], [ true, true, true ]);
+    and(test, [ -1, 1 ], [ 1, 1, 0 ], [ true, true, false ]);
+};
 
 exports['add numbers'] = function (test) {
     add(test, 1, 2, 3);
