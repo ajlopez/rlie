@@ -97,6 +97,10 @@ function and(test, x, y, expected) {
     apply2(test, 'and', x, y, expected);
 }
 
+function or(test, x, y, expected) {
+    apply2(test, 'or', x, y, expected);
+}
+
 function add(test, x, y, expected) {
     apply2(test, 'add', x, y, expected);
 }
@@ -155,6 +159,38 @@ exports['and vector and vector'] = function (test) {
     and(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ true, true ]);
     and(test, [ 1, 1, 1 ], [ -1, 1 ], [ true, true, true ]);
     and(test, [ -1, 1 ], [ 1, 1, 0 ], [ true, true, false ]);
+};
+
+exports['or logical values'] = function (test) {
+    or(test, true, true, true);
+    or(test, true, false, true);
+    or(test, false, true, true);
+    or(test, false, false, false);
+};
+
+exports['or numbers'] = function (test) {
+    or(test, 1, 2, true);
+    or(test, Math.PI, Math.E, true);
+    or(test, -1, 1, true);
+};
+
+exports['or number and vector'] = function (test) {
+    or(test, 1, [ 1, 0, 3 ], [ true, true, true ]);
+    or(test, Math.PI, [ Math.E, Math.E ], [ true, true ]);
+    or(test, -1, [ 1, 1, 1 ], [ true, true, true ]);
+};
+
+exports['or vector and number'] = function (test) {
+    or(test, [ 1, 0, 3 ], 1, [ true, true, true ]);
+    or(test, [ Math.E, Math.E ], Math.PI, [ true, true ]);
+    or(test, [ 1, 1, 1 ], -1, [ true, true, true ]);
+};
+
+exports['or vector and vector'] = function (test) {
+    or(test, [ 1, 0, 3 ], [ 1, 0, 3 ], [ true, false, true ]);
+    or(test, [ Math.E, Math.E ], [ 1, Math.PI ], [ true, true ]);
+    or(test, [ 1, 1, 1 ], [ -1, 1 ], [ true, true, true ]);
+    or(test, [ -1, 1 ], [ 1, 1, 0 ], [ true, true, true ]);
 };
 
 exports['add numbers'] = function (test) {
