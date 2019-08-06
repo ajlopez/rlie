@@ -48,6 +48,12 @@ exports['evaluate mod expressions'] = function (test) {
     evaluate(test, 'c(1, 2, 3)%%2', [ 1, 0, 1 ]);
 };
 
+exports['evaluate logical or expressions'] = function (test) {
+    evaluate(test, '3 | 2', true);
+    evaluate(test, 'FALSE | FALSE', false);
+    evaluate(test, 'c(1, 2, 3) |2', [ true, true, true ]);
+};
+
 exports['evaluate index vector using vector as index'] = function (test) {
     evaluate(test, 'c(1, 2, 3)[c(1, 2)]', [ 1, 2 ]);
     evaluate(test, 'c(1, 4, 9)[c(1, 3)]', [ 1, 9 ]);
