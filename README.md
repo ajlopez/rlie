@@ -30,7 +30,8 @@ console.dir(vector.elements());
 - [R Matrix](https://www.datamentor.io/r-programming/matrix/)
 - [Purr Tutorial](https://jennybc.github.io/purrr-tutorial/)
 - [R Programming](https://www.tutorialgateway.org/r-programming/)
-
+- [What is the difference between && and & and between || and | in R](https://www.quora.com/What-is-the-difference-between-and-and-between-and-in-R)
+    
 ## To Do
 
 - Sort operations on vectors
