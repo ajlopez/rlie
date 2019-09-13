@@ -48,6 +48,11 @@ exports['evaluate mod expressions'] = function (test) {
     evaluate(test, 'c(1, 2, 3)%%2', [ 1, 0, 1 ]);
 };
 
+exports['evaluate logical not expressions'] = function (test) {
+    evaluate(test, '!FALSE', true);
+    evaluate(test, '!TRUE', false);
+};
+
 exports['evaluate logical or expressions'] = function (test) {
     evaluate(test, '3 | 2', true);
     evaluate(test, 'FALSE | FALSE', false);

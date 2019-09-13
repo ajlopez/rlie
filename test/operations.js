@@ -489,6 +489,11 @@ exports['not numbers'] = function (test) {
     not(test, 2, false);
 };
 
+exports['not booleans'] = function (test) {
+    not(test, false, true);
+    not(test, true, false);
+};
+
 exports['not vectors'] = function (test) {
     // TODO in R, not over empty vector returns error
     // not(test, [ ], NaN);
