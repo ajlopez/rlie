@@ -105,6 +105,18 @@ exports['comma as delimiter'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['semicolon as delimiter'] = function (test) {
+    const lexer = lexers.lexer(';');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ';');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['colon as delimiter'] = function (test) {
     const lexer = lexers.lexer(':');
   
