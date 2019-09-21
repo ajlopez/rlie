@@ -237,6 +237,8 @@ exports['evaluate length'] = function (test) {
 exports['evaluate assign'] = function (test) {
     evaluate(test, 'answer <- 42\r\nanswer', [ 42, 42 ]);
     evaluate(test, '1 -> one\r\none', [ 1, 1 ]);
+    evaluate(test, 'answer <- 42; answer', [ 42, 42 ]);
+    evaluate(test, '1 -> one; one', [ 1, 1 ]);
 };
 
 exports['evaluate log'] = function (test) {
