@@ -1,5 +1,6 @@
 
 const parser = require('../lib/parser');
+const geast = require('geast');
 
 exports['parse integer'] = function (test) {
     const result = parser.parse('integer', '42');
@@ -224,5 +225,22 @@ exports['parse integer expression as command ending with semicolon'] = function 
     test.ok(result);
     test.equal(result.ntype(), 'constant');
     test.strictEqual(result.value(), 42);
+};
+
+exports['parse composite command'] = function (test) {
+    const result = parser.parse('command', '{ a <- 42; b <- 1; }');
+    
+    test.ok(result);
+    
+    test.deepEqual(geast.toObject(result), { ntype: 'sequence', nodes: [
+        { ntype: 'assign', 
+            lefthand: { ntype: 'name', name: 'a' },
+            expression: { ntype: 'constant', value: 42 }
+        },
+        { ntype: 'assign', 
+            lefthand: { ntype: 'name', name: 'b' },
+            expression: { ntype: 'constant', value: 1 }
+        }
+    ] });
 };
 
