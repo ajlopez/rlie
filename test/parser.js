@@ -202,4 +202,27 @@ exports['parse range term'] = function (test) {
     test.equal(result.to().value(), 42);
 };
 
+exports['parse integer expression as command'] = function (test) {
+    const result = parser.parse('command', '42');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'constant');
+    test.strictEqual(result.value(), 42);
+};
+
+exports['parse integer expression as command ending with new line'] = function (test) {
+    const result = parser.parse('command', '42\n');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'constant');
+    test.strictEqual(result.value(), 42);
+};
+
+exports['parse integer expression as command ending with semicolon'] = function (test) {
+    const result = parser.parse('command', '42;');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'constant');
+    test.strictEqual(result.value(), 42);
+};
 

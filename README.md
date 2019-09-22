@@ -31,6 +31,7 @@ console.dir(vector.elements());
 - [Purr Tutorial](https://jennybc.github.io/purrr-tutorial/)
 - [R Programming](https://www.tutorialgateway.org/r-programming/)
 - [What is the difference between && and & and between || and | in R](https://www.quora.com/What-is-the-difference-between-and-and-between-and-in-R)
+- [Argument Order and Named Arguments](https://www.oreilly.com/library/view/r-in-a/9781449358204/ch09s05.html)
     
 ## To Do
 
