@@ -244,3 +244,30 @@ exports['parse composite command'] = function (test) {
     ] });
 };
 
+exports['parse function expression'] = function (test) {
+    const result = parser.parse('expression', 'function(a, b) { a + b }');
+    
+    test.ok(result);
+    
+    test.deepEqual(geast.toObject(result), { ntype: 'function',
+        arguments: [ 'a', 'b' ],
+        body: {
+            ntype: 'sequence',
+            nodes: [
+                {
+                    ntype: 'binary',
+                    operator: '+',
+                    left: {
+                        ntype: 'name',
+                        name: 'a'
+                    },
+                    right: {
+                        ntype: 'name',
+                        name: 'b'
+                    }
+                }
+            ]
+        }
+    });
+};
+
