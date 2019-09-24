@@ -116,3 +116,12 @@ exports['process indexed term'] = function (test) {
     process(test, 'c(1,4,9)[2]', 4, context);
     process(test, 'c(1,4,9)[3]', 9, context);
 };
+
+exports['process composite command'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ answer <- 42; one <- 1; }', 1, context);
+    test.equal(context.get('answer'), 42);
+    test.equal(context.get('one'), 1);
+};
+
