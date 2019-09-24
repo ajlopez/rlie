@@ -14,6 +14,16 @@ function process(test, text, expected, context) {
         test.strictEqual(result, expected);
 }
 
+function processc(test, text, expected, context) {
+    const node = parser.parse('command', text);
+    const result = interpreter.process(node, context);
+    
+    if (vectors.isVector(result))
+        test.deepEqual(result.elements(), expected);
+    else
+        test.strictEqual(result, expected);
+}
+
 exports['process constants'] = function (test) {
     process(test, '42', 42);
     process(test, '3.14159', 3.14159);
@@ -42,6 +52,13 @@ exports['process assign to left'] = function (test) {
     const context = contexts.context();
     
     process(test, 'answer <- 42', 42, context);
+    test.equal(context.get('answer'), 42);
+};
+
+exports['process assign to left command'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, 'answer <- 42;', 42, context);
     test.equal(context.get('answer'), 42);
 };
 
