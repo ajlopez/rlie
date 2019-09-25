@@ -262,6 +262,15 @@ exports['evaluate abs'] = function (test) {
     evaluate(test, 'abs(c(1, -2, -3))', [ Math.abs(1), Math.abs(-2), Math.abs(-3) ]);
 };
 
+exports['evaluate function'] = function (test) {
+    const result = rlie.evaluate('function(a,b) { a + b }');
+    
+    test.ok(result);
+    test.ok(result.execute);
+    test.equal(typeof result.execute, 'function');
+    
+    test.equal(result.execute([1, 2]), 3);    
+};
 
 
 
