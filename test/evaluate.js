@@ -14,7 +14,7 @@ function evaluate(test, text, expected) {
     if (Array.isArray(result))
         test.deepEqual(result, expected);
     else
-        test.strictEqual(rlie.evaluate(text), expected);
+        test.strictEqual(result, expected);
 }
 
 exports['evaluate constants'] = function (test) {
@@ -270,6 +270,13 @@ exports['evaluate function'] = function (test) {
     test.equal(typeof result.execute, 'function');
     
     test.equal(result.execute([1, 2]), 3);    
+};
+
+exports['define and call function'] = function (test) {
+const result = rlie.evaluate('{ add <- function(a,b) { a + b }; add(1,2) }');
+    
+    test.ok(result);
+    test.equal(result, 3);
 };
 
 
