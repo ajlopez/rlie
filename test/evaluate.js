@@ -262,6 +262,18 @@ exports['evaluate abs'] = function (test) {
     evaluate(test, 'abs(c(1, -2, -3))', [ Math.abs(1), Math.abs(-2), Math.abs(-3) ]);
 };
 
+exports['evaluate sin'] = function (test) {
+    evaluate(test, 'sin(1)', Math.sin(1));
+    evaluate(test, 'sin(-2)', Math.sin(-2));
+    evaluate(test, 'sin(c(1, -2, -3))', [ Math.sin(1), Math.sin(-2), Math.sin(-3) ]);
+};
+
+exports['evaluate cos'] = function (test) {
+    evaluate(test, 'cos(1)', Math.cos(1));
+    evaluate(test, 'cos(-2)', Math.cos(-2));
+    evaluate(test, 'cos(c(1, -2, -3))', [ Math.cos(1), Math.cos(-2), Math.cos(-3) ]);
+};
+
 exports['evaluate function'] = function (test) {
     const result = rlie.evaluate('function(a,b) { a + b }');
     
