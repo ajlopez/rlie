@@ -721,3 +721,17 @@ exports['abs operation'] = function (test) {
     apply1(test, 'abs', [ 1, 2, -3 ], [ Math.abs(1), Math.abs(2), Math.abs(-3) ]);
 };
 
+exports['sin operation'] = function (test) {
+    test.equal(operations.sin(1), Math.sin(1));
+    test.equal(operations.sin(2), Math.sin(2));
+    test.equal(operations.sin(-3), Math.sin(-3));
+    apply1(test, 'sin', [ 1, 2, -3 ], [ Math.sin(1), Math.sin(2), Math.sin(-3) ]);
+};
+
+exports['cos operation'] = function (test) {
+    test.equal(operations.cos(1), Math.cos(1));
+    test.equal(operations.cos(2), Math.cos(2));
+    test.equal(operations.cos(-3), Math.cos(-3));
+    apply1(test, 'cos', [ 1, 2, -3 ], [ Math.cos(1), Math.cos(2), Math.cos(-3) ]);
+};
+
