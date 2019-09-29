@@ -735,3 +735,10 @@ exports['cos operation'] = function (test) {
     apply1(test, 'cos', [ 1, 2, -3 ], [ Math.cos(1), Math.cos(2), Math.cos(-3) ]);
 };
 
+exports['tan operation'] = function (test) {
+    test.equal(operations.tan(1), Math.tan(1));
+    test.equal(operations.tan(2), Math.tan(2));
+    test.equal(operations.tan(-3), Math.tan(-3));
+    apply1(test, 'tan', [ 1, 2, -3 ], [ Math.tan(1), Math.tan(2), Math.tan(-3) ]);
+};
+
