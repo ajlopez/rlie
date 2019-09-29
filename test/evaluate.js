@@ -274,6 +274,10 @@ exports['evaluate cos'] = function (test) {
     evaluate(test, 'cos(c(1, -2, -3))', [ Math.cos(1), Math.cos(-2), Math.cos(-3) ]);
 };
 
+exports['evaluate pi constant'] = function (test) {
+    evaluate(test, 'pi', Math.PI);
+};
+
 exports['evaluate function'] = function (test) {
     const result = rlie.evaluate('function(a,b) { a + b }');
     
@@ -285,7 +289,7 @@ exports['evaluate function'] = function (test) {
 };
 
 exports['define and call function'] = function (test) {
-const result = rlie.evaluate('{ add <- function(a,b) { a + b }; add(1,2) }');
+    const result = rlie.evaluate('{ add <- function(a,b) { a + b }; add(1,2) }');
     
     test.ok(result);
     test.equal(result, 3);
