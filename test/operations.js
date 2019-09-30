@@ -742,3 +742,10 @@ exports['tan operation'] = function (test) {
     apply1(test, 'tan', [ 1, 2, -3 ], [ Math.tan(1), Math.tan(2), Math.tan(-3) ]);
 };
 
+exports['atan operation'] = function (test) {
+    test.equal(operations.atan(1), Math.atan(1));
+    test.equal(operations.atan(2), Math.atan(2));
+    test.equal(operations.atan(-3), Math.atan(-3));
+    apply1(test, 'atan', [ 1, 2, -3 ], [ Math.atan(1), Math.atan(2), Math.atan(-3) ]);
+};
+
