@@ -280,6 +280,12 @@ exports['evaluate tan'] = function (test) {
     evaluate(test, 'tan(c(1, -2, -3))', [ Math.tan(1), Math.tan(-2), Math.tan(-3) ]);
 };
 
+exports['evaluate atan'] = function (test) {
+    evaluate(test, 'atan(1)', Math.atan(1));
+    evaluate(test, 'atan(-2)', Math.atan(-2));
+    evaluate(test, 'atan(c(1, -2, -3))', [ Math.atan(1), Math.atan(-2), Math.atan(-3) ]);
+};
+
 exports['evaluate pi constant'] = function (test) {
     evaluate(test, 'pi', Math.PI);
 };
