@@ -749,3 +749,9 @@ exports['atan operation'] = function (test) {
     apply1(test, 'atan', [ 1, 2, -3 ], [ Math.atan(1), Math.atan(2), Math.atan(-3) ]);
 };
 
+exports['acos operation'] = function (test) {
+    test.equal(operations.acos(1), Math.acos(1));
+    test.equal(operations.acos(0.2), Math.acos(0.2));
+    test.equal(operations.acos(-0.3), Math.acos(-0.3));
+    apply1(test, 'acos', [ 1, 0.2, -0.3 ], [ Math.acos(1), Math.acos(0.2), Math.acos(-0.3) ]);
+};
