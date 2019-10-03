@@ -755,3 +755,10 @@ exports['acos operation'] = function (test) {
     test.equal(operations.acos(-0.3), Math.acos(-0.3));
     apply1(test, 'acos', [ 1, 0.2, -0.3 ], [ Math.acos(1), Math.acos(0.2), Math.acos(-0.3) ]);
 };
+
+exports['asin operation'] = function (test) {
+    test.equal(operations.asin(1), Math.asin(1));
+    test.equal(operations.asin(0.2), Math.asin(0.2));
+    test.equal(operations.asin(-0.3), Math.asin(-0.3));
+    apply1(test, 'asin', [ 1, 0.2, -0.3 ], [ Math.asin(1), Math.asin(0.2), Math.asin(-0.3) ]);
+};
