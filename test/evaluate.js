@@ -292,6 +292,12 @@ exports['evaluate acos'] = function (test) {
     evaluate(test, 'acos(c(1, -0.2, -0.3))', [ Math.acos(1), Math.acos(-0.2), Math.acos(-0.3) ]);
 };
 
+exports['evaluate asin'] = function (test) {
+    evaluate(test, 'asin(1)', Math.asin(1));
+    evaluate(test, 'asin(-0.2)', Math.asin(-0.2));
+    evaluate(test, 'asin(c(1, -0.2, -0.3))', [ Math.asin(1), Math.asin(-0.2), Math.asin(-0.3) ]);
+};
+
 exports['evaluate pi constant'] = function (test) {
     evaluate(test, 'pi', Math.PI);
 };
