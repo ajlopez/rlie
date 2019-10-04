@@ -271,3 +271,26 @@ exports['parse function expression'] = function (test) {
     });
 };
 
+exports['parse call'] = function (test) {
+    const result = parser.parse('expression', 'add(1,2)');
+    
+    test.ok(result);
+    
+    test.deepEqual(geast.toObject(result), { ntype: 'call',
+        target: {
+            ntype: 'name',
+            name: 'add'
+        },
+        arguments: [
+            {
+                ntype: 'constant',
+                value: 1
+            },
+            {
+                ntype: 'constant',
+                value: 2
+            }
+        ]
+    });
+};
+
