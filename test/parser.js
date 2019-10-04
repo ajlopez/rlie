@@ -294,3 +294,34 @@ exports['parse call'] = function (test) {
     });
 };
 
+exports['parse call with named arguments'] = function (test) {
+    const result = parser.parse('expression', 'add(x=1,y=2)');
+    
+    test.ok(result);
+    
+    test.deepEqual(geast.toObject(result), { ntype: 'call',
+        target: {
+            ntype: 'name',
+            name: 'add'
+        },
+        arguments: [
+            {
+                ntype: 'named',
+                name: 'x',
+                expression: {
+                    ntype: 'constant',
+                    value: 1
+                }
+            },
+            {
+                ntype: 'named',
+                name: 'y',
+                expression: {
+                    ntype: 'constant',
+                    value: 2
+                }
+            }
+        ]
+    });
+};
+
