@@ -24,3 +24,18 @@ exports['set variable in parent and get variable in child context'] = function (
     test.equal(context.get('answer'), 42);
 };
 
+exports['top context cannot be changed only shadowed'] = function (test) {
+    const top1 = contexts.top();
+    
+    top1.set('one', 1);
+    
+    const top2 = contexts.top();
+    
+    top2.set('two', 2);
+    
+    test.equal(top1.get('one'), 1);
+    test.equal(top1.get('two'), null);
+    test.equal(top2.get('one'), null);
+    test.equal(top2.get('two'), 2);
+};
+
