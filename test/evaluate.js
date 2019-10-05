@@ -319,5 +319,14 @@ exports['define and call function'] = function (test) {
     test.equal(result, 3);
 };
 
+exports['define and call function using subtraction'] = function (test) {
+    const result = rlie.evaluate('{ sub <- function(a,b) { a - b }; sub(3,2) }');
+    
+    test.ok(result);
+    test.equal(result, 1);
+};
+
+
+
 
 
