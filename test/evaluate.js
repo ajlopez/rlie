@@ -326,6 +326,13 @@ exports['define and call function using subtraction'] = function (test) {
     test.equal(result, 1);
 };
 
+exports['define and call function using named arguments'] = function (test) {
+    const result = rlie.evaluate('{ sub <- function(a,b) { a - b }; sub(b=2,a=3) }');
+    
+    test.ok(result);
+    test.equal(result, 1);
+};
+
 
 
 
