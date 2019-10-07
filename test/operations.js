@@ -762,3 +762,11 @@ exports['asin operation'] = function (test) {
     test.equal(operations.asin(-0.3), Math.asin(-0.3));
     apply1(test, 'asin', [ 1, 0.2, -0.3 ], [ Math.asin(1), Math.asin(0.2), Math.asin(-0.3) ]);
 };
+
+exports['atan2 operation'] = function (test) {
+    test.equal(operations.atan2(1, 2), Math.atan2(1, 2));
+    test.equal(operations.atan2(2, 3), Math.atan2(2, 3));
+    test.equal(operations.atan2(-3, 1), Math.atan2(-3, 1));
+    apply2(test, 'atan2', [ 1, 2, -3 ], [ 2, 3, -1 ], [ Math.atan2(1, 2), Math.atan2(2, 3), Math.atan2(-3, -1) ]);
+};
+
