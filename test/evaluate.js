@@ -286,6 +286,12 @@ exports['evaluate atan'] = function (test) {
     evaluate(test, 'atan(c(1, -2, -3))', [ Math.atan(1), Math.atan(-2), Math.atan(-3) ]);
 };
 
+exports['evaluate atan2'] = function (test) {
+    evaluate(test, 'atan2(1, 2)', Math.atan2(1, 2));
+    evaluate(test, 'atan2(-2, 1)', Math.atan2(-2, 1));
+    evaluate(test, 'atan2(c(1, -2, -3), c(2, 3, 4))', [ Math.atan2(1, 2), Math.atan2(-2, 3), Math.atan2(-3, 4) ]);
+};
+
 exports['evaluate acos'] = function (test) {
     evaluate(test, 'acos(1)', Math.acos(1));
     evaluate(test, 'acos(-0.2)', Math.acos(-0.2));
