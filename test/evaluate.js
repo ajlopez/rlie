@@ -339,6 +339,18 @@ exports['define and call function using named arguments'] = function (test) {
     test.equal(result, 1);
 };
 
+exports['letters vector'] = function (test) {
+    const result = rlie.evaluate('letters');
+    
+    test.ok(result);
+    test.ok(vectors.isVector(result));
+    test.equal(result.length(), 26);
+    test.deepEqual(result.elements(), [
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+        "t", "u", "v", "w", "x", "y", "z"
+    ]);
+};
+
 
 
 
