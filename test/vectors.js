@@ -96,10 +96,15 @@ exports['is vector'] = function (test) {
 };
 
 exports['is logical'] = function (test) {
-    const vector = vectors.vector([ 1, 4, 9 ]);
-    
     test.ok(vectors.isLogical(vectors.vector([ true, false ])));
     test.ok(!vectors.isLogical(vectors.vector([ 1, false ])));
     test.ok(!vectors.isLogical(vectors.vector([ true, 2 ])));
+};
+
+exports['is integer'] = function (test) {
+    test.ok(vectors.isInteger(vectors.vector([ 1, 2 ])));
+    test.ok(!vectors.isInteger(vectors.vector([ 1, false ])));
+    test.ok(!vectors.isInteger(vectors.vector([ 1, 2.5 ])));
+    test.ok(!vectors.isInteger(vectors.vector([ "foo", 2 ])));
 };
 
