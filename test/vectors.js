@@ -108,3 +108,19 @@ exports['is integer'] = function (test) {
     test.ok(!vectors.isInteger(vectors.vector([ "foo", 2 ])));
 };
 
+exports['is integer'] = function (test) {
+    test.ok(vectors.isInteger(vectors.vector([ 1, 2 ])));
+    test.ok(!vectors.isInteger(vectors.vector([ 1, false ])));
+    test.ok(!vectors.isInteger(vectors.vector([ 1, 2.5 ])));
+    test.ok(!vectors.isInteger(vectors.vector([ "foo", 2 ])));
+};
+
+exports['is double'] = function (test) {
+    test.ok(vectors.isDouble(vectors.vector([ 1.1, 2.2 ])));
+    test.ok(!vectors.isDouble(vectors.vector([ 1, 2 ])));
+    test.ok(!vectors.isDouble(vectors.vector([ 1.1, 2.0 ])));
+    test.ok(!vectors.isDouble(vectors.vector([ 1.1, false ])));
+    test.ok(!vectors.isDouble(vectors.vector([ 1, 2.5 ])));
+    test.ok(!vectors.isDouble(vectors.vector([ "foo", 2 ])));
+};
+
