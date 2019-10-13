@@ -124,3 +124,11 @@ exports['is double'] = function (test) {
     test.ok(!vectors.isDouble(vectors.vector([ "foo", 2 ])));
 };
 
+exports['is numeric'] = function (test) {
+    test.ok(vectors.isNumeric(vectors.vector([ 1.1, 2.2 ])));
+    test.ok(vectors.isNumeric(vectors.vector([ 1, 2 ])));
+    test.ok(!vectors.isNumeric(vectors.vector([ 1.1, false ])));
+    test.ok(!vectors.isNumeric(vectors.vector([ null, 2.5 ])));
+    test.ok(!vectors.isNumeric(vectors.vector([ "foo", 2 ])));
+};
+
