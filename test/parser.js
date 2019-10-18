@@ -294,6 +294,31 @@ exports['parse call'] = function (test) {
     });
 };
 
+exports['parse call using property'] = function (test) {
+    const result = parser.parse('expression', 'is.numeric(1)');
+    
+    test.ok(result);
+    
+    test.deepEqual(geast.toObject(result), 
+    { ntype: 'call',
+        target: {
+            ntype: 'property',
+            expression: {
+                ntype: 'name',
+                name: 'is'
+            },
+            name: 'numeric'
+        },
+        arguments: [
+            {
+                ntype: 'constant',
+                value: 1
+            }
+        ]
+    }
+    );
+};
+
 exports['parse call with named arguments'] = function (test) {
     const result = parser.parse('expression', 'add(x=1,y=2)');
     
