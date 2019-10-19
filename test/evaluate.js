@@ -1,6 +1,7 @@
 
 const rlie = require('..');
 const vectors = require('../lib/vectors');
+const contexts = require('../lib/contexts');
 
 function evaluate(test, text, expected) {
     let result = rlie.evaluate(text);
@@ -351,7 +352,17 @@ exports['letters vector'] = function (test) {
     ]);
 };
 
-
+exports['access property'] = function (test) {
+    const context = contexts.context();
+    const values = contexts.context();
+    context.set('the', values);
+    values.set('answer', 42);
+    
+    const result = rlie.evaluate('the.answer', context);
+    
+    test.ok(result);
+    test.equal(result, 42);
+};
 
 
 
