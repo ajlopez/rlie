@@ -364,5 +364,18 @@ exports['access property'] = function (test) {
     test.equal(result, 42);
 };
 
+exports['evaluate is numeric'] = function (test) {
+    evaluate(test, 'is.numeric(1)', true);
+    evaluate(test, 'is.numeric(1.2)', true);
+    evaluate(test, 'is.numeric(c(1, 2))', true);
+    evaluate(test, 'is.numeric(c(1.2, 2))', true);
+    evaluate(test, 'is.numeric(c(c(1.2, 2), c(1,2)))', true);
+    
+    evaluate(test, 'is.numeric("foo")', false);
+    evaluate(test, 'is.numeric(TRUE)', false);
+    evaluate(test, 'is.numeric(c("foo", 2))', false);
+    evaluate(test, 'is.numeric(c(c(1,2), c("foo", 2)))', false);
+};
+
 
 
