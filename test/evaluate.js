@@ -377,5 +377,19 @@ exports['evaluate is numeric'] = function (test) {
     evaluate(test, 'is.numeric(c(c(1,2), c("foo", 2)))', false);
 };
 
+exports['evaluate is integer'] = function (test) {
+    evaluate(test, 'is.integer(1)', true);
+    evaluate(test, 'is.integer(c(1, 2))', true);
+    evaluate(test, 'is.integer(c(c(3, 2), c(1,2)))', true);
+    
+    evaluate(test, 'is.integer(1.2)', false);
+    evaluate(test, 'is.integer(c(1.2, 2))', false);
+    evaluate(test, 'is.integer("foo")', false);
+    evaluate(test, 'is.integer(TRUE)', false);
+    evaluate(test, 'is.integer(c("foo", 2))', false);
+    evaluate(test, 'is.integer(c(c(1,2), c("foo", 2)))', false);
+};
+
+
 
 
