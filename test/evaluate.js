@@ -390,6 +390,19 @@ exports['evaluate is integer'] = function (test) {
     evaluate(test, 'is.integer(c(c(1,2), c("foo", 2)))', false);
 };
 
+exports['evaluate is double'] = function (test) {
+    evaluate(test, 'is.double(1.1)', true);
+    evaluate(test, 'is.double(c(1.1, 2.2))', true);
+    evaluate(test, 'is.double(c(c(3.3, 2.2), c(1.1,2.2)))', true);
+    
+    evaluate(test, 'is.double(1)', false);
+    evaluate(test, 'is.double(c(1.2, 2))', false);
+    evaluate(test, 'is.double("foo")', false);
+    evaluate(test, 'is.double(TRUE)', false);
+    evaluate(test, 'is.double(c("foo", 2))', false);
+    evaluate(test, 'is.double(c(c(1,2), c("foo", 2)))', false);
+};
+
 
 
 
