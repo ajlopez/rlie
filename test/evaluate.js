@@ -404,5 +404,18 @@ exports['evaluate is double'] = function (test) {
 };
 
 
+exports['evaluate is logical'] = function (test) {
+    evaluate(test, 'is.logical(TRUE)', true);
+    evaluate(test, 'is.logical(FALSE)', true);
+    evaluate(test, 'is.logical(c(TRUE, FALSE))', true);
+    evaluate(test, 'is.logical(c(c(TRUE, TRUE), c(FALSE,FALSE)))', true);
+    
+    evaluate(test, 'is.logical(1)', false);
+    evaluate(test, 'is.logical(c(1.2, 2))', false);
+    evaluate(test, 'is.logical("foo")', false);
+    evaluate(test, 'is.logical(c("foo", TRUE))', false);
+    evaluate(test, 'is.logical(c(c(1,2), c("foo", 2)))', false);
+};
+
 
 
