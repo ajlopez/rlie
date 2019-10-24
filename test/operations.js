@@ -770,3 +770,12 @@ exports['atan2 operation'] = function (test) {
     apply2(test, 'atan2', [ 1, 2, -3 ], [ 2, 3, -1 ], [ Math.atan2(1, 2), Math.atan2(2, 3), Math.atan2(-3, -1) ]);
 };
 
+exports['asCharacter operation'] = function (test) {
+    test.equal(operations.asCharacter(1), "1");
+    test.equal(operations.asCharacter(2.3), "2.3");
+    test.equal(operations.asCharacter(true), "TRUE");
+    test.equal(operations.asCharacter(false), "FALSE");
+    test.equal(operations.asCharacter("foo"), "foo");
+    apply1(test, 'asCharacter', [ 1, 2, -3 ], [ "1", "2", "-3" ]);
+};
+
