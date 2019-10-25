@@ -779,3 +779,13 @@ exports['asCharacter operation'] = function (test) {
     apply1(test, 'asCharacter', [ 1, 2, -3 ], [ "1", "2", "-3" ]);
 };
 
+exports['asInteger operation'] = function (test) {
+    test.equal(operations.asInteger("1"), 1);
+    test.equal(operations.asInteger(2.3), 2);
+    test.equal(operations.asInteger("2.3"), 2);
+    test.equal(operations.asInteger(true), 1);
+    test.equal(operations.asInteger(false), 0);
+    // TODO NA
+    // test.equal(operations.asInteger("foo"), "foo");
+    apply1(test, 'asInteger', [ "1", "2", "-3" ], [ 1, 2, -3 ]);
+};
