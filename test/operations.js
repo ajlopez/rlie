@@ -789,3 +789,14 @@ exports['asInteger operation'] = function (test) {
     // test.equal(operations.asInteger("foo"), "foo");
     apply1(test, 'asInteger', [ "1", "2", "-3" ], [ 1, 2, -3 ]);
 };
+
+exports['asDouble operation'] = function (test) {
+    test.equal(operations.asDouble("1"), 1);
+    test.equal(operations.asDouble(2.3), 2.3);
+    test.equal(operations.asDouble("2.3"), 2.3);
+    test.equal(operations.asDouble(true), 1);
+    test.equal(operations.asDouble(false), 0);
+    // TODO NA
+    // test.equal(operations.asDouble("foo"), "foo");
+    apply1(test, 'asDouble', [ "1.2", "2.3", "-3.4" ], [ 1.2, 2.3, -3.4 ]);
+};
