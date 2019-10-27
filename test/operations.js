@@ -800,3 +800,15 @@ exports['asDouble operation'] = function (test) {
     // test.equal(operations.asDouble("foo"), "foo");
     apply1(test, 'asDouble', [ "1.2", "2.3", "-3.4" ], [ 1.2, 2.3, -3.4 ]);
 };
+
+exports['asLogical operation'] = function (test) {
+    test.equal(operations.asLogical(1), true);
+    test.equal(operations.asLogical(0), false);
+    test.equal(operations.asLogical(2.3), true);
+    test.equal(operations.asLogical(true), true);
+    test.equal(operations.asLogical(false), false);
+    // TODO NA
+    // test.equal(operations.asLogical("foo"), "foo");
+    // test.equal(operations.asLogical("1"), "1");
+    apply1(test, 'asLogical', [ 1, 2, 0 ], [ true, true, false ]);
+};
