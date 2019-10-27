@@ -790,15 +790,15 @@ exports['asInteger operation'] = function (test) {
     apply1(test, 'asInteger', [ "1", "2", "-3" ], [ 1, 2, -3 ]);
 };
 
-exports['asDouble operation'] = function (test) {
-    test.equal(operations.asDouble("1"), 1);
-    test.equal(operations.asDouble(2.3), 2.3);
-    test.equal(operations.asDouble("2.3"), 2.3);
-    test.equal(operations.asDouble(true), 1);
-    test.equal(operations.asDouble(false), 0);
+exports['asNumeric operation'] = function (test) {
+    test.equal(operations.asNumeric("1"), 1);
+    test.equal(operations.asNumeric(2.3), 2.3);
+    test.equal(operations.asNumeric("2.3"), 2.3);
+    test.equal(operations.asNumeric(true), 1);
+    test.equal(operations.asNumeric(false), 0);
     // TODO NA
-    // test.equal(operations.asDouble("foo"), "foo");
-    apply1(test, 'asDouble', [ "1.2", "2.3", "-3.4" ], [ 1.2, 2.3, -3.4 ]);
+    // test.equal(operations.asNumeric("foo"), "foo");
+    apply1(test, 'asNumeric', [ "1.2", "2.3", "-3.4" ], [ 1.2, 2.3, -3.4 ]);
 };
 
 exports['asLogical operation'] = function (test) {
