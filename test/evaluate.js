@@ -428,5 +428,16 @@ exports['evaluate as numeric'] = function (test) {
     evaluate(test, 'as.numeric(FALSE)', 0);
 };
 
+exports['evaluate as integer'] = function (test) {
+    evaluate(test, 'as.integer(1)', 1);
+    evaluate(test, 'as.integer(1.2)', 1);
+    evaluate(test, 'as.integer("1.2")', 1);
+    evaluate(test, 'as.integer(c(1, 2))', [1, 2]);
+    evaluate(test, 'as.integer(c(1.2, 2))', [1, 2]);
+    evaluate(test, 'as.integer(c("1", "2"))', [1, 2]);
+    evaluate(test, 'as.integer(TRUE)', 1);
+    evaluate(test, 'as.integer(FALSE)', 0);
+};
+
 
 
