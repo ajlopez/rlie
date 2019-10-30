@@ -439,5 +439,16 @@ exports['evaluate as integer'] = function (test) {
     evaluate(test, 'as.integer(FALSE)', 0);
 };
 
+exports['evaluate as logical'] = function (test) {
+    evaluate(test, 'as.logical(1)', true);
+    evaluate(test, 'as.logical(0)', false);
+    evaluate(test, 'as.logical(1.2)', true);
+    evaluate(test, 'as.logical(c(1, 2))', [true, true]);
+    evaluate(test, 'as.logical(c(0, 2))', [false, true]);
+    evaluate(test, 'as.logical(TRUE)', true);
+    evaluate(test, 'as.logical(FALSE)', false);
+};
+
+
 
 
