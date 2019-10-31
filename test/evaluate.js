@@ -449,6 +449,13 @@ exports['evaluate as logical'] = function (test) {
     evaluate(test, 'as.logical(FALSE)', false);
 };
 
-
-
+exports['evaluate as character'] = function (test) {
+    evaluate(test, 'as.character(1)', '1');
+    evaluate(test, 'as.character(0)', '0');
+    evaluate(test, 'as.character(1.2)', '1.2');
+    evaluate(test, 'as.character(c(1, 2))', ['1', '2']);
+    evaluate(test, 'as.character(c(0, 2))', ['0', '2']);
+    evaluate(test, 'as.character(TRUE)', 'TRUE');
+    evaluate(test, 'as.character(FALSE)', 'FALSE');
+};
 
