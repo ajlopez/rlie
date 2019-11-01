@@ -452,6 +452,7 @@ exports['evaluate as logical'] = function (test) {
 exports['evaluate as character'] = function (test) {
     evaluate(test, 'as.character(1)', '1');
     evaluate(test, 'as.character(0)', '0');
+    evaluate(test, 'as.character("foo")', 'foo');
     evaluate(test, 'as.character(1.2)', '1.2');
     evaluate(test, 'as.character(c(1, 2))', ['1', '2']);
     evaluate(test, 'as.character(c(0, 2))', ['0', '2']);
