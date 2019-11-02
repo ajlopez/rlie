@@ -2,6 +2,7 @@
 const vectors = require('../lib/vectors');
 const ranges = require('../lib/ranges');
 const repetitions = require('../lib/repetitions');
+const predicates = require('../lib/predicates');
 
 exports['create vector'] = function (test) {
     const vector = vectors.vector([1, 2, 3]);
@@ -80,5 +81,38 @@ exports['resize vector'] = function (test) {
     test.deepEqual(vectors.resize(v0, 5).elements(), [ 1, 2, 3, 1, 2 ]);
     test.deepEqual(vectors.resize(v0, 0).elements(), [ ]);
     test.deepEqual(vectors.resize(vectors.vector([]), 3).elements(), [ 0, 0, 0 ]);
+};
+
+exports['create integer vector with length 3'] = function (test) {
+    const vector = vectors.integer(3);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 3);
+    test.deepEqual(vector.elements(), [ 0, 0, 0 ]);
+    
+    test.ok(predicates.isInteger(vector));
+};
+
+exports['create integer vector with length 3.9'] = function (test) {
+    const vector = vectors.integer(3.9);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 3);
+    test.deepEqual(vector.elements(), [ 0, 0, 0 ]);
+    
+    test.ok(predicates.isInteger(vector));
+};
+
+exports['create integer vector with length 0'] = function (test) {
+    const vector = vectors.integer(0);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 0);
+    test.deepEqual(vector.elements(), [ ]);
+    
+    test.ok(predicates.isInteger(vector));
 };
 
