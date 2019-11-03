@@ -417,6 +417,18 @@ exports['evaluate is logical'] = function (test) {
     evaluate(test, 'is.logical(c(c(1,2), c("foo", 2)))', false);
 };
 
+exports['evaluate is character'] = function (test) {
+    evaluate(test, 'is.character("foo")', true);
+    evaluate(test, 'is.character(c("foo", "bar"))', true);
+    evaluate(test, 'is.character(c(c("foo", "bar"), c("foo", "bar")))', true);
+    
+    evaluate(test, 'is.character(1)', false);
+    evaluate(test, 'is.character(TRUE)', false);
+    evaluate(test, 'is.character(c(1.2, 2))', false);
+    evaluate(test, 'is.character(c("foo", TRUE))', false);
+    evaluate(test, 'is.character(c(c(1,2), c("foo", 2)))', false);
+};
+
 exports['evaluate as numeric'] = function (test) {
     evaluate(test, 'as.numeric(1)', 1);
     evaluate(test, 'as.numeric(1.2)', 1.2);
