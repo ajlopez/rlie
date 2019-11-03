@@ -428,6 +428,17 @@ exports['evaluate as numeric'] = function (test) {
     evaluate(test, 'as.numeric(FALSE)', 0);
 };
 
+exports['evaluate as numeric'] = function (test) {
+    evaluate(test, 'as.double(1)', 1);
+    evaluate(test, 'as.double(1.2)', 1.2);
+    evaluate(test, 'as.double("1.2")', 1.2);
+    evaluate(test, 'as.double(c(1, 2))', [1, 2]);
+    evaluate(test, 'as.double(c(1.2, 2))', [1.2, 2]);
+    evaluate(test, 'as.double(c("1", "2"))', [1, 2]);
+    evaluate(test, 'as.double(TRUE)', 1);
+    evaluate(test, 'as.double(FALSE)', 0);
+};
+
 exports['evaluate as integer'] = function (test) {
     evaluate(test, 'as.integer(1)', 1);
     evaluate(test, 'as.integer(1.2)', 1);
