@@ -75,3 +75,19 @@ exports['is numeric'] = function (test) {
     test.ok(!predicates.isNumeric(vectors.vector([ "foo", 2 ])));
 };
 
+exports['is character'] = function (test) {
+    test.ok(predicates.isCharacter("foo"));
+
+    test.ok(!predicates.isCharacter(true));
+    test.ok(!predicates.isCharacter(false));
+    test.ok(!predicates.isCharacter(1));
+    test.ok(!predicates.isCharacter(null));
+    test.ok(!predicates.isCharacter(undefined));
+    
+    test.ok(predicates.isCharacter(vectors.vector([ "foo", "bar" ])));
+    test.ok(predicates.isCharacter(vectors.vector([ vectors.vector([ "foo", "bar" ]) ])));
+    
+    test.ok(!predicates.isCharacter(vectors.vector([ "1", false ])));
+    test.ok(!predicates.isCharacter(vectors.vector([ true, "2" ])));
+};
+
