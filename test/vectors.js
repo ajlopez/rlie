@@ -116,3 +116,38 @@ exports['create integer vector with length 0'] = function (test) {
     test.ok(predicates.isInteger(vector));
 };
 
+exports['create double vector with length 3'] = function (test) {
+    const vector = vectors.double(3);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 3);
+    test.deepEqual(vector.elements(), [ 0.0, 0.0, 0.0 ]);
+    
+    // TODO add or not type to vectors?
+    // test.ok(predicates.isDouble(vector));
+};
+
+exports['create double vector with length 3.9'] = function (test) {
+    const vector = vectors.double(3.9);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 3);
+    test.deepEqual(vector.elements(), [ 0.0, 0.0, 0.0 ]);
+    
+    // TODO add or not type to vectors?
+    //test.ok(predicates.isDouble(vector));
+};
+
+exports['create double vector with length 0'] = function (test) {
+    const vector = vectors.double(0);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 0);
+    test.deepEqual(vector.elements(), [ ]);
+    
+    test.ok(predicates.isDouble(vector));
+};
+
