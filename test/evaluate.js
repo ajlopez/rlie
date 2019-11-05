@@ -483,3 +483,9 @@ exports['evaluate as character'] = function (test) {
     evaluate(test, 'as.character(FALSE)', 'FALSE');
 };
 
+exports['evaluate integer function'] = function (test) {
+    evaluate(test, 'integer(1)', [ 0 ]);
+    evaluate(test, 'integer(3.2)', [ 0, 0, 0 ]);
+    evaluate(test, 'integer(0)', [ ]);
+};
+
