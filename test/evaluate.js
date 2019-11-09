@@ -489,3 +489,9 @@ exports['evaluate integer function'] = function (test) {
     evaluate(test, 'integer(0)', [ ]);
 };
 
+exports['evaluate double function'] = function (test) {
+    evaluate(test, 'double(1)', [ 0 ]);
+    evaluate(test, 'double(3.2)', [ 0, 0, 0 ]);
+    evaluate(test, 'double(0)', [ ]);
+};
+
