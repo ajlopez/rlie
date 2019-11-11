@@ -151,3 +151,36 @@ exports['create double vector with length 0'] = function (test) {
     test.ok(predicates.isDouble(vector));
 };
 
+exports['create character vector with length 3'] = function (test) {
+    const vector = vectors.character(3);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 3);
+    test.deepEqual(vector.elements(), [ '', '', '' ]);
+    
+    test.ok(predicates.isCharacter(vector));
+};
+
+exports['create character vector with length 3.9'] = function (test) {
+    const vector = vectors.character(3.9);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 3);
+    test.deepEqual(vector.elements(), [ 0.0, 0.0, 0.0 ]);
+    
+    test.ok(predicates.isCharacter(vector));
+};
+
+exports['create character vector with length 0'] = function (test) {
+    const vector = vectors.character(0);
+    
+    test.ok(vector);
+    test.equal(typeof vector, 'object');
+    test.equal(vector.length(), 0);
+    test.deepEqual(vector.elements(), [ ]);
+    
+    test.ok(predicates.isCharacter(vector));
+};
+
