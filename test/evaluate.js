@@ -501,3 +501,9 @@ exports['evaluate numeric function'] = function (test) {
     evaluate(test, 'numeric(0)', [ ]);
 };
 
+exports['evaluate character function'] = function (test) {
+    evaluate(test, 'character(1)', [ '' ]);
+    evaluate(test, 'character(3.2)', [ '', '', '' ]);
+    evaluate(test, 'character(0)', [ ]);
+};
+
