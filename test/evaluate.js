@@ -507,3 +507,9 @@ exports['evaluate character function'] = function (test) {
     evaluate(test, 'character(0)', [ ]);
 };
 
+exports['evaluate logical function'] = function (test) {
+    evaluate(test, 'logical(1)', [ false ]);
+    evaluate(test, 'logical(3.2)', [ false, false, false ]);
+    evaluate(test, 'logical(0)', [ ]);
+};
+
