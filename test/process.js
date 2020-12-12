@@ -35,6 +35,7 @@ exports['process constants'] = function (test) {
 
 exports['process name'] = function (test) {
     const context = contexts.context();
+    
     context.set('answer', 42);
     
     process(test, 'answer', 42, context);
@@ -42,6 +43,7 @@ exports['process name'] = function (test) {
 
 exports['process call'] = function (test) {
     const context = contexts.context();
+    
     context.set('c', function (args) { return vectors.vector(args); });
     
     process(test, 'c(1, 2, 3)', [ 1, 2, 3 ], context);
@@ -52,6 +54,7 @@ exports['process assign to left'] = function (test) {
     const context = contexts.context();
     
     process(test, 'answer <- 42', 42, context);
+    
     test.equal(context.get('answer'), 42);
 };
 
@@ -59,6 +62,7 @@ exports['process assign to left command'] = function (test) {
     const context = contexts.context();
     
     processc(test, 'answer <- 42;', 42, context);
+    
     test.equal(context.get('answer'), 42);
 };
 
@@ -66,6 +70,7 @@ exports['process assign to right'] = function (test) {
     const context = contexts.context();
     
     process(test, '42 -> answer', 42, context);
+    
     test.equal(context.get('answer'), 42);
 };
 
@@ -121,6 +126,7 @@ exports['process composite command'] = function (test) {
     const context = contexts.context();
     
     processc(test, '{ answer <- 42; one <- 1; }', 1, context);
+    
     test.equal(context.get('answer'), 42);
     test.equal(context.get('one'), 1);
 };
