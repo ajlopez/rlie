@@ -58,6 +58,22 @@ exports['parse name'] = function (test) {
     test.strictEqual(result.name(), 'foo');
 };
 
+exports['parse name with spaces'] = function (test) {
+    const result = parser.parse('name', '   foo  ');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'name');
+    test.strictEqual(result.name(), 'foo');
+};
+
+exports['parse name with tabs'] = function (test) {
+    const result = parser.parse('name', '\t\tfoo\t');
+    
+    test.ok(result);
+    test.equal(result.ntype(), 'name');
+    test.strictEqual(result.name(), 'foo');
+};
+
 exports['parse add'] = function (test) {
     const result = parser.parse('expression', '2+40');
     
